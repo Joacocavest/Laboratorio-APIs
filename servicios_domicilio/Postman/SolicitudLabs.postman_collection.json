@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "9dd90c40-0fad-476e-9ce6-e068cc1b122c",
+		"name": "SolicitudLabs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43264264"
+	},
+	"item": [
+		{
+			"name": "ListSolicitudes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDM1MTYxLCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6IjViODM5N2E1NjdkZDQ1MzU5M2VjNzgxMDJjZWE3NzAzIiwidXNlcl9pZCI6MX0.Pt0_NhFVJw6a8W0vu39F8qg2PQWJ6Faun4f3yfeh05E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/solicitudes/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"solicitudes",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addSolicitud",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDM1ODI3LCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6ImE0ZjhhOTVhNDUzZjQ3OGU5NjNjMDgxOTliNmQwOTdiIiwidXNlcl9pZCI6MX0.dEhsFVLMmU1Yatzp4SeS2wm2frvoujc3I22hLx5svZ8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cliente\": 4,\r\n  \"trabajador\": 5,\r\n  \"servicio\": 1,\r\n  \"direccion\": \"Barrio Los Aromos, casa 11\",\r\n  \"fecha_solicitada\": \"2025-05-30\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Se me cae el revoque de la pared de la cocina.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/solicitudes/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"solicitudes",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

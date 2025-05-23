@@ -14,7 +14,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     # permission_classes = [IsAuthenticated, IsOwnerOrReadOnly]
 
     def perform_create(self, serializer):
-        serializer.save(self.request.user)
+        serializer.save()
 
 class RegistroAPIView(APIView):
     def post(self, request):
