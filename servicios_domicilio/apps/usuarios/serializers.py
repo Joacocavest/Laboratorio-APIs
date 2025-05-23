@@ -13,7 +13,6 @@ class UsuarioSerializer(serializers.ModelSerializer):
             'servicio',
             'telefono'
         ]
-
         read_only_fields = [
             'id',
         ]

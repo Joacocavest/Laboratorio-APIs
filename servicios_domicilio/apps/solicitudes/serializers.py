@@ -7,9 +7,9 @@ from apps.usuarios.models import Usuario
 
 
 class SolicitudesCreateSerializer(serializers.ModelSerializer):
-    cliente = serializers.StringRelatedField(read_only=True)
-    trabajador = serializers.PrimaryKeyRelatedField(queryset=Usuario.objects.filter(rol='trabajador'))
-    servicio = serializers.PrimaryKeyRelatedField(queryset=Servicio.objects.all())
+    cliente = UsuarioSerializer.StringRelatedField(read_only=True)
+    trabajador = UsuarioSerializer.PrimaryKeyRelatedField(queryset=Usuario.objects.filter(rol='trabajador'))
+    servicio = ServicioSerializer.PrimaryKeyRelatedField(queryset=Servicio.objects.all())
     # cliente = UsuarioSerializer(read_only=True)
     # trabajador = UsuarioSerializer(read_only=True)
     # servicio = ServicioSerializer(read_only=True)
