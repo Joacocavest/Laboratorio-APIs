@@ -1,0 +1,217 @@
+{
+	"info": {
+		"_postman_id": "ab4bc9a9-5aa4-4c76-89a9-79757c260314",
+		"name": "UsuarioLabs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43264264"
+	},
+	"item": [
+		{
+			"name": "ListUsuarios",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDM0OTk1LCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6ImY3MDkwZDM1ZGU3YTQzYWI4OGZhZjNlNDNkYTVjZmUxIiwidXNlcl9pZCI6MX0.6_6VZ5dRjPR65xwtDU0A0Vb6I9nz680F0PxRhZPHHTs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/usuarios/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"usuarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddUsuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDM1MTYxLCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6IjViODM5N2E1NjdkZDQ1MzU5M2VjNzgxMDJjZWE3NzAzIiwidXNlcl9pZCI6MX0.Pt0_NhFVJw6a8W0vu39F8qg2PQWJ6Faun4f3yfeh05E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"JorgeRojas\",\r\n    \"password\" : \"12345678\",\r\n    \"email\" : \"jorgerojas3@gmail.com\",\r\n    \"tipo\" : \"trabajador\",\r\n    \"servicio\" : 1,\r\n    \"domicilio\" : \"Barrio Nueva La Rioja casa n°18\",\r\n    \"telefono\" : \"3834238214\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/usuarios/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"usuarios",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateUsuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDM0NjY2LCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6IjkzMGM0ODU3NmNmNDQ4OGY5Y2FkZTRkYjM5MTBhODFhIiwidXNlcl9pZCI6MX0.5Iqsl_UW16v2OT5HSS-qXbl7bc2oJcbS10hwVzSZ3hY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"domicilio\" : \"Barrio Nueva La Rioja casa n°18\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/usuarios/3/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"usuarios",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUsuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDM0OTk1LCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6ImY3MDkwZDM1ZGU3YTQzYWI4OGZhZjNlNDNkYTVjZmUxIiwidXNlcl9pZCI6MX0.6_6VZ5dRjPR65xwtDU0A0Vb6I9nz680F0PxRhZPHHTs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/usuarios/3/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"usuarios",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUsuario",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDM0OTk1LCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6ImY3MDkwZDM1ZGU3YTQzYWI4OGZhZjNlNDNkYTVjZmUxIiwidXNlcl9pZCI6MX0.6_6VZ5dRjPR65xwtDU0A0Vb6I9nz680F0PxRhZPHHTs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"JoaquinCaviedes\",\r\n    \"password\" : \"12345678\",\r\n    \"email\" : \"joaquincaviedes3@gmail.com\",\r\n    \"tipo\" : \"cliente\",\r\n    \"domicilio\" : \"Barrio Nueva Catamarca casa n°18\",\r\n    \"telefono\" : \"3834238214\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/usuarios/4/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"usuarios",
+						"4",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

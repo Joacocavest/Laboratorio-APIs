@@ -34,3 +34,14 @@ class RegistroSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = Usuario.objects.create_user(**validated_data)
         return user
+    
+    def validate(self, attrs):
+        tipo = attrs.get('tipo')
+        servicio = attrs.get('servicio')
+
+        if tipo == 'trabajador' and not servicio:
+            raise serializers.ValidationError("Un trabajador debe tener un servicio.")
+        if tipo == 'cliente' and servicio:
+            raise serializers.ValidationError("Un cliente no debe tener un servicio asignado.")
+    
+        return attrs
