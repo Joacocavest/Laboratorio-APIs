@@ -2,8 +2,8 @@ from rest_framework import serializers
 from apps.solicitudes.models import Solicitudes
 from apps.usuarios.serializers import UsuarioSerializer
 from apps.servicios.serializers import ServicioSerializer
-from servicios_domicilio.apps.servicios.models import Servicio
-from servicios_domicilio.apps.usuarios.models import Usuario
+from apps.servicios.models import Servicio
+from apps.usuarios.models import Usuario
 
 
 class SolicitudesCreateSerializer(serializers.ModelSerializer):
