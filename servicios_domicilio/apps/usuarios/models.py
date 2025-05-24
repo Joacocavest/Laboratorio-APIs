@@ -29,4 +29,4 @@ class Usuario(AbstractUser):
             raise ValidationError("Un cliente no debe tener un servicio asignado.")
 
     def __str__(self):
-        return f'{self.username} - ({self.tipo})'
+        return f'{self.username} - ({self.tipo}) - ({self.servicio})'

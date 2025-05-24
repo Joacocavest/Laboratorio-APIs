@@ -23,5 +23,4 @@ urlpatterns = [
     path('view-set/', include('servicios_domicilio.router')),
     path('api/token/', TokenObtainPairView.as_view()),
     path('api/token/refresh/', TokenRefreshView.as_view()),
-    path('api-auth/', include('rest_framework.urls')), # Para poder loguear un usuario mediante la interfaz de Browsable API
 ]

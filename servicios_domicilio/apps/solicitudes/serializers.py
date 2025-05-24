@@ -1,3 +1,4 @@
+from datetime import timezone
 from rest_framework import serializers
 from apps.solicitudes.models import Solicitudes
 from apps.servicios.models import Servicio
@@ -24,3 +25,9 @@ class SolicitudSerializer(serializers.ModelSerializer):
             'estado',
             'cliente',
         ]
+    
+    def validate_fecha_solicitada(self, value):
+        if value < timezone.now():
+            raise serializers.ValidationError("La fecha de solicitud debe ser posterior a hoy.")
+        return value
+    
