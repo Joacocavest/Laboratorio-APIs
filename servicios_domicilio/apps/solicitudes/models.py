@@ -1,4 +1,4 @@
-from datetime import date
+from django.utils import timezone
 from django.db import models
 
 from django.conf import settings
@@ -26,11 +26,10 @@ class Solicitudes(models.Model):
     )
     direccion = models.CharField(
         max_length=250, 
-        blank=False, 
-        unique=True
+        blank=False
     )
-    fecha_creacion = models.DateTimeField(auto_now_add=True)
-    fecha_solicitada = models.DateField(default=date.today)
+    fecha_creacion = models.DateField(auto_now_add=True)
+    fecha_solicitada = models.DateField(default=timezone.now)
     estado = models.CharField(max_length=20, choices=ESTADO, default='pendiente')
 
     descripcion = models.TextField(max_length=1000, blank=True)
