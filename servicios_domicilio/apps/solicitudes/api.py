@@ -11,13 +11,12 @@ class SolicitudViewSet(viewsets.ModelViewSet):
     filter_backends= [DjangoFilterBackend, filters.OrderingFilter]
     filterset_class = SolicitudesFilter
     ordering_fields= ['fecha_creacion', 'fecha_solicitada']
-    
-
-    # permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
-        if user.tipo == 'cliente':
+        if user.is_staff:
+            return Solicitudes.objects.all()
+        elif user.tipo == 'cliente':
             return Solicitudes.objects.filter(cliente=user)
         elif user.tipo == 'trabajador':
             return Solicitudes.objects.filter(trabajador=user)
@@ -44,3 +43,22 @@ class SolicitudViewSet(viewsets.ModelViewSet):
         solicitud.save()
         return Response({"mensaje": "Solicitud rechazada"})
     
+    def list(self, request, *args, **kwargs):
+        if request.version == '1':
+            # lógica para versión 1 (podés cambiar serializer o datos)
+            response = super().list(request, *args, **kwargs)
+            response.data = {
+                "version": "1",
+                "data": response.data
+            }
+            return response
+        elif request.version == '2':
+            # lógica para versión 2 (puede incluir más info o estructura distinta)
+            response = super().list(request, *args, **kwargs)
+            response.data = {
+                "version": "2",
+                "info": "Vista extendida",
+                "data": response.data
+            }
+            return response
+        return super().list(request, *args, **kwargs)

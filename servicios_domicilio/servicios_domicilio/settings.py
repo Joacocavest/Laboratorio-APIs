@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,8 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6$m=55l+v@$&h%_@s&_-%oyjlrv=#u8zxd)%j6=*^z32v1^ry9'
 
 SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
     'SIGNING_KEY': SECRET_KEY, # Presente por defecto en settings
     'ALGORITHM': 'HS256',  # Algoritmo de firma 
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -146,7 +152,21 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    
+    'PAGE_SIZE': 100,
+
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.QueryParameterVersioning',
+
+    'VERSION_PARAM': 'v',
+
+    'ALLOWED_VERSIONS': ['1', '2'],
+
+    # 'DEFAULT_VERSION': '1',
+
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.OrderingFilter',
+    ],
 }
 
 
