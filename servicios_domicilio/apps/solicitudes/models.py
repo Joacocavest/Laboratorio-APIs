@@ -1,10 +1,11 @@
+from uuid import uuid4
 from django.utils import timezone
 from django.db import models
-
 from django.conf import settings
 
 # Create your models here.
 class Solicitudes(models.Model):
+    uuid = models.UUIDField(default=uuid4, editable=False, unique=True)
     ESTADO = [
         ('pendiente', 'Pendiente'),
         ('confirmada', 'Confirmada'),
@@ -25,7 +26,7 @@ class Solicitudes(models.Model):
         on_delete=models.CASCADE
     )
     direccion = models.CharField(
-        max_length=250, 
+        max_length=550, 
         blank=False
     )
     fecha_creacion = models.DateField(auto_now_add=True)
