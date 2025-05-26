@@ -14,7 +14,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDM0OTk1LCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6ImY3MDkwZDM1ZGU3YTQzYWI4OGZhZjNlNDNkYTVjZmUxIiwidXNlcl9pZCI6MX0.6_6VZ5dRjPR65xwtDU0A0Vb6I9nz680F0PxRhZPHHTs",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4Mjk3Njk4LCJpYXQiOjE3NDgyOTU4OTgsImp0aSI6IjZkNmIxNDBmMTlhNTRkNjc4NDJhZDA3NDliMDZkMDVkIiwidXNlcl9pZCI6MX0.fMYlcSsUil0WSVWAGoer6VHeYMhE9xfl3-53m1Vb4DU",
 							"type": "string"
 						}
 					]
@@ -22,7 +22,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/view-set/usuarios/",
+					"raw": "http://127.0.0.1:8000/view-set/usuarios/?v=1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -35,10 +35,93 @@
 						"view-set",
 						"usuarios",
 						""
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "1"
+						}
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "ListUsuarios",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 22:02:59 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1482"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 6,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"ea8b050a-6767-4888-a989-478491d8579d\",\n                \"username\": \"admin\",\n                \"tipo\": \"\",\n                \"domicilio\": \"\",\n                \"lat\": null,\n                \"lon\": null,\n                \"email\": \"woney123@gmail.com\",\n                \"servicio\": null,\n                \"telefono\": \"\"\n            },\n            {\n                \"uuid\": \"528773a0-6bc9-4226-afb0-6dcc1d33ac86\",\n                \"username\": \"CaviedesJoaquin\",\n                \"tipo\": \"trabajador\",\n                \"domicilio\": \"Av. Sal Gema 1635, Argentina\",\n                \"lat\": -28.4946078,\n                \"lon\": -65.8066178,\n                \"email\": \"joaquincaviedes@gmail.com\",\n                \"servicio\": \"Jardinero\",\n                \"telefono\": \"3834238214\"\n            },\n            {\n                \"uuid\": \"b1925b52-3731-4fab-a7fa-b8db5831c1c8\",\n                \"username\": \"EspinozaGuillermo\",\n                \"tipo\": \"cliente\",\n                \"domicilio\": \"Av. Ramon R. Lopez, Argentina\",\n                \"lat\": -37.55239,\n                \"lon\": -59.6266,\n                \"email\": \"espinozaguillermo@gmail.com\",\n                \"servicio\": null,\n                \"telefono\": \"3834627731\"\n            },\n            {\n                \"uuid\": \"4f3c90a6-1205-4ae0-be50-02ceb01aef29\",\n                \"username\": \"JorgeRojas\",\n                \"tipo\": \"trabajador\",\n                \"domicilio\": \"Av. Belgrano, Argentina\",\n                \"lat\": -34.6904453,\n                \"lon\": -58.3394109,\n                \"email\": \"jorgerojas@gmail.com\",\n                \"servicio\": \"Plomero\",\n                \"telefono\": \"3834624851\"\n            },\n            {\n                \"uuid\": \"21d360b0-3dbb-402d-939b-e5044fb64e2b\",\n                \"username\": \"EugeQuevedo\",\n                \"tipo\": \"cliente\",\n                \"domicilio\": \"Av. Galindez, Catamarca, Argentina\",\n                \"lat\": -28.4668715,\n                \"lon\": -65.797505,\n                \"email\": \"eugequevedo@gmail.com\",\n                \"servicio\": null,\n                \"telefono\": \"3834624852\"\n            },\n            {\n                \"uuid\": \"05f18457-3018-4a4e-bcef-8c6985fe3902\",\n                \"username\": \"BadBunny\",\n                \"tipo\": \"cliente\",\n                \"domicilio\": \"Av. Santa Fe, Buenos Aires\",\n                \"lat\": -34.5951559,\n                \"lon\": -58.3792367,\n                \"email\": \"benitomartinez@gmail.com\",\n                \"servicio\": null,\n                \"telefono\": \"3834624858\"\n            }\n        ]\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "AddUsuario",
@@ -48,7 +131,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDM1MTYxLCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6IjViODM5N2E1NjdkZDQ1MzU5M2VjNzgxMDJjZWE3NzAzIiwidXNlcl9pZCI6MX0.Pt0_NhFVJw6a8W0vu39F8qg2PQWJ6Faun4f3yfeh05E",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4Mjk3Njk4LCJpYXQiOjE3NDgyOTU4OTgsImp0aSI6IjZkNmIxNDBmMTlhNTRkNjc4NDJhZDA3NDliMDZkMDVkIiwidXNlcl9pZCI6MX0.fMYlcSsUil0WSVWAGoer6VHeYMhE9xfl3-53m1Vb4DU",
 							"type": "string"
 						}
 					]
@@ -57,7 +140,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\" : \"JorgeRojas\",\r\n    \"password\" : \"12345678\",\r\n    \"email\" : \"jorgerojas3@gmail.com\",\r\n    \"tipo\" : \"trabajador\",\r\n    \"servicio\" : 1,\r\n    \"domicilio\" : \"Barrio Nueva La Rioja casa n°18\",\r\n    \"telefono\" : \"3834238214\"\r\n}",
+					"raw": "{\r\n    \"username\" : \"CaviedesJoaquin\",\r\n    \"password\" : \"12345678\",\r\n    \"email\" : \"joaquincaviedes@gmail.com\",\r\n    \"tipo\" : \"trabajador\",\r\n    \"servicio\" : \"Jardinero\",\r\n    \"domicilio\" : \"Av. Sal Gema 1635, Argentina\",\r\n    \"telefono\" : \"3834238214\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -65,7 +148,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/view-set/usuarios/",
+					"raw": "http://127.0.0.1:8000/view-set/usuarios/?v=1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -78,10 +161,187 @@
 						"view-set",
 						"usuarios",
 						""
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "1"
+						}
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "AddUsuarioTrabajador",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"CaviedesJoaquin\",\r\n    \"password\" : \"12345678\",\r\n    \"email\" : \"joaquincaviedes@gmail.com\",\r\n    \"tipo\" : \"trabajador\",\r\n    \"servicio\" : \"Jardinero\",\r\n    \"domicilio\" : \"Av. Sal Gema 1635, Argentina\",\r\n    \"telefono\" : \"3834238214\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 21:57:46 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "258"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"uuid\": \"528773a0-6bc9-4226-afb0-6dcc1d33ac86\",\n    \"username\": \"CaviedesJoaquin\",\n    \"tipo\": \"trabajador\",\n    \"domicilio\": \"Av. Sal Gema 1635, Argentina\",\n    \"lat\": -28.4946078,\n    \"lon\": -65.8066178,\n    \"email\": \"joaquincaviedes@gmail.com\",\n    \"servicio\": \"Jardinero\",\n    \"telefono\": \"3834238214\"\n}"
+				},
+				{
+					"name": "AddUsuarioCliente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"EspinozaGuillermo\",\r\n    \"password\" : \"12345678\",\r\n    \"email\" : \"espinozaguillermo@gmail.com\",\r\n    \"tipo\" : \"cliente\",\r\n    \"servicio\" : null,\r\n    \"domicilio\" : \"Av. Ramon R. Lopez, Argentina\",\r\n    \"telefono\" : \"3834627731\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 21:59:37 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "248"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"uuid\": \"b1925b52-3731-4fab-a7fa-b8db5831c1c8\",\n    \"username\": \"EspinozaGuillermo\",\n    \"tipo\": \"cliente\",\n    \"domicilio\": \"Av. Ramon R. Lopez, Argentina\",\n    \"lat\": -37.55239,\n    \"lon\": -59.6266,\n    \"email\": \"espinozaguillermo@gmail.com\",\n    \"servicio\": null,\n    \"telefono\": \"3834627731\"\n}"
+				}
+			]
 		},
 		{
 			"name": "UpdateUsuario",
@@ -100,7 +360,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"domicilio\" : \"Barrio Nueva La Rioja casa n°18\"\r\n}",
+					"raw": "{\r\n\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -108,7 +368,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/view-set/usuarios/3/",
+					"raw": "http://127.0.0.1:8000/view-set/usuarios/05f18457-3018-4a4e-bcef-8c6985fe3902/?v=1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -120,12 +380,105 @@
 					"path": [
 						"view-set",
 						"usuarios",
-						"3",
+						"05f18457-3018-4a4e-bcef-8c6985fe3902",
 						""
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "1"
+						}
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "UpdateUsuario",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"domicilio\": \"Republica 555, Catamarca, Argentina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/05f18457-3018-4a4e-bcef-8c6985fe3902/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								"05f18457-3018-4a4e-bcef-8c6985fe3902",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 22:09:10 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "247"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"uuid\": \"05f18457-3018-4a4e-bcef-8c6985fe3902\",\n    \"username\": \"BadBunny\",\n    \"tipo\": \"cliente\",\n    \"domicilio\": \"Republica 555, Catamarca, Argentina\",\n    \"lat\": -34.5951559,\n    \"lon\": -58.3792367,\n    \"email\": \"benitomartinez@gmail.com\",\n    \"servicio\": null,\n    \"telefono\": \"3834624858\"\n}"
+				}
+			]
 		},
 		{
 			"name": "DeleteUsuario",
@@ -135,7 +488,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDM0OTk1LCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6ImY3MDkwZDM1ZGU3YTQzYWI4OGZhZjNlNDNkYTVjZmUxIiwidXNlcl9pZCI6MX0.6_6VZ5dRjPR65xwtDU0A0Vb6I9nz680F0PxRhZPHHTs",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4Mjk4ODUxLCJpYXQiOjE3NDgyOTcwNTEsImp0aSI6ImExZDExNDUyZTA0NjQwNjA4OWJhNDlmYTM3YmM2MmNkIiwidXNlcl9pZCI6MX0.ord69Wu9CN9qZNxzcPrl2l-ds8zvIHiropHoV0VQkus",
 							"type": "string"
 						}
 					]
@@ -152,7 +505,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/view-set/usuarios/3/",
+					"raw": "http://127.0.0.1:8000/view-set/usuarios/05f18457-3018-4a4e-bcef-8c6985fe3902/?v=1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -164,37 +517,119 @@
 					"path": [
 						"view-set",
 						"usuarios",
-						"3",
+						"05f18457-3018-4a4e-bcef-8c6985fe3902",
 						""
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "1"
+						}
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "DeleteUsuario",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/05f18457-3018-4a4e-bcef-8c6985fe3902/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								"05f18457-3018-4a4e-bcef-8c6985fe3902",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 22:09:48 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
 		},
 		{
 			"name": "getUsuario",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDM0OTk1LCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6ImY3MDkwZDM1ZGU3YTQzYWI4OGZhZjNlNDNkYTVjZmUxIiwidXNlcl9pZCI6MX0.6_6VZ5dRjPR65xwtDU0A0Vb6I9nz680F0PxRhZPHHTs",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4Mjk3Njk4LCJpYXQiOjE3NDgyOTU4OTgsImp0aSI6IjZkNmIxNDBmMTlhNTRkNjc4NDJhZDA3NDliMDZkMDVkIiwidXNlcl9pZCI6MX0.fMYlcSsUil0WSVWAGoer6VHeYMhE9xfl3-53m1Vb4DU",
 							"type": "string"
 						}
 					]
 				},
 				"method": "GET",
 				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"username\" : \"JoaquinCaviedes\",\r\n    \"password\" : \"12345678\",\r\n    \"email\" : \"joaquincaviedes3@gmail.com\",\r\n    \"tipo\" : \"cliente\",\r\n    \"domicilio\" : \"Barrio Nueva Catamarca casa n°18\",\r\n    \"telefono\" : \"3834238214\"\r\n}"
-				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/view-set/usuarios/4/",
+					"raw": "http://127.0.0.1:8000/view-set/usuarios/1/?v=1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -206,12 +641,173 @@
 					"path": [
 						"view-set",
 						"usuarios",
-						"4",
+						"1",
 						""
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "1"
+						}
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "getUsuarioTrabajador",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/528773a0-6bc9-4226-afb0-6dcc1d33ac86/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								"528773a0-6bc9-4226-afb0-6dcc1d33ac86",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 22:05:15 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "258"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"uuid\": \"528773a0-6bc9-4226-afb0-6dcc1d33ac86\",\n    \"username\": \"CaviedesJoaquin\",\n    \"tipo\": \"trabajador\",\n    \"domicilio\": \"Av. Sal Gema 1635, Argentina\",\n    \"lat\": -28.4946078,\n    \"lon\": -65.8066178,\n    \"email\": \"joaquincaviedes@gmail.com\",\n    \"servicio\": \"Jardinero\",\n    \"telefono\": \"3834238214\"\n}"
+				},
+				{
+					"name": "getUsuarioCliente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/21d360b0-3dbb-402d-939b-e5044fb64e2b/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								"21d360b0-3dbb-402d-939b-e5044fb64e2b",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 22:05:51 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "245"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"uuid\": \"21d360b0-3dbb-402d-939b-e5044fb64e2b\",\n    \"username\": \"EugeQuevedo\",\n    \"tipo\": \"cliente\",\n    \"domicilio\": \"Av. Galindez, Catamarca, Argentina\",\n    \"lat\": -28.4668715,\n    \"lon\": -65.797505,\n    \"email\": \"eugequevedo@gmail.com\",\n    \"servicio\": null,\n    \"telefono\": \"3834624852\"\n}"
+				}
+			]
 		}
 	]
 }

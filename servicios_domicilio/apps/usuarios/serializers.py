@@ -1,8 +1,10 @@
 from rest_framework import serializers
 from apps.usuarios.models import Usuario
 from apps.servicios.models import Servicio
+from servicios_domicilio.core.utils import obtener_coordenadas
 
 class UsuarioSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True, required=True)
     servicio = serializers.SlugRelatedField(
         slug_field='nombre',
         queryset=Servicio.objects.all(),
@@ -12,11 +14,13 @@ class UsuarioSerializer(serializers.ModelSerializer):
     class Meta: 
         model= Usuario
         fields= [
-            'id',
             'uuid',
             'username',
+            'password',
             'tipo',
             'domicilio',
+            'lat',
+            'lon',
             'email',
             'servicio',
             'telefono',
@@ -35,3 +39,15 @@ class UsuarioSerializer(serializers.ModelSerializer):
     
         return attrs
     
+    def create(self, validated_data):
+        password = validated_data.pop('password')
+        domicilio = validated_data.get('domicilio')
+        coords = obtener_coordenadas(domicilio)
+        if coords:
+            validated_data['lat'] = coords['lat']
+            validated_data['lon'] = coords['lon']
+
+        user = Usuario(**validated_data)
+        user.set_password(password)
+        user.save()
+        return user

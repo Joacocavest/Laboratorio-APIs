@@ -29,6 +29,8 @@ class Solicitudes(models.Model):
         max_length=550, 
         blank=False
     )
+    lat = models.FloatField(null=True, blank=True)
+    lon = models.FloatField(null=True, blank=True)
     fecha_creacion = models.DateField(auto_now_add=True)
     fecha_solicitada = models.DateField(default=timezone.now)
     estado = models.CharField(max_length=20, choices=ESTADO, default='pendiente')

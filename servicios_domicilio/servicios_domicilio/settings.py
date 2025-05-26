@@ -153,7 +153,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     
-    'PAGE_SIZE': 100,
+    'PAGE_SIZE': 10,
 
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.QueryParameterVersioning',
 
@@ -161,7 +161,7 @@ REST_FRAMEWORK = {
 
     'ALLOWED_VERSIONS': ['1', '2'],
 
-    'DEFAULT_VERSION': '1',
+    # 'DEFAULT_VERSION': '1',
 
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
@@ -170,5 +170,7 @@ REST_FRAMEWORK = {
 }
 
 GOOGLE_MAPS_API_KEY = 'AIzaSyA5OwfzfHSIPLMn20rbGO8q_xiIzJNQu9I'
+OPENCAGE_API_KEY = '813147f0145a4a6cbbbf351a19b34035'
+
 
 

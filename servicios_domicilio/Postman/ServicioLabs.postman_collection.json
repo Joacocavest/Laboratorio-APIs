@@ -14,7 +14,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDMyNjM3LCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6IjA0OTI4NThhOTQ3YjQzZWY4NjQyZmE2Y2I3OTljODJkIiwidXNlcl9pZCI6MX0.gRsZxfWMy-mkZQN4ZEx2kxART42xpPdx3vPAIaq7xpI",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4Mjk3Njk4LCJpYXQiOjE3NDgyOTU4OTgsImp0aSI6IjZkNmIxNDBmMTlhNTRkNjc4NDJhZDA3NDliMDZkMDVkIiwidXNlcl9pZCI6MX0.fMYlcSsUil0WSVWAGoer6VHeYMhE9xfl3-53m1Vb4DU",
 							"type": "string"
 						}
 					]
@@ -23,7 +23,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\" : \"Recolector\",\r\n    \"descripcion\" : \"Servicio: Se encarga de recoger los residuos generados en los hogares y los lleva a un lugar de tratamiento o disposición final.\",\r\n    \"activo\" : true\r\n}",
+					"raw": "{\r\n    \"nombre\" : \"Int.AireAcondicionado\",\r\n    \"descripcion\" : \"Servicio: Se encarga de instalar aires acondicionados en diferentes ambientes.\",\r\n    \"activo\" : true\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -31,7 +31,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/view-set/servicios/",
+					"raw": "http://127.0.0.1:8000/view-set/servicios/?v=1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -44,10 +44,175 @@
 						"view-set",
 						"servicios",
 						""
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "1"
+						}
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "AddServicioAlbañil",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\" : \"Albañil\",\r\n    \"descripcion\" : \"Construcción: Construye paredes, pisos, cimientos y otras estructuras utilizando ladrillos, bloques de cemento, piedra y otros materiales. Reparación: Repara estructuras dañadas, rellenando fisuras, reemplazando ladrillos y otros materiales.\",\r\n    \"activo\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/servicios/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"servicios",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 21:47:12 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "304"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 6,\n    \"nombre\": \"Albañil\",\n    \"descripcion\": \"Construcción: Construye paredes, pisos, cimientos y otras estructuras utilizando ladrillos, bloques de cemento, piedra y otros materiales. Reparación: Repara estructuras dañadas, rellenando fisuras, reemplazando ladrillos y otros materiales.\",\n    \"activo\": true\n}"
+				},
+				{
+					"name": "AddServicioGasista",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\" : \"Gasista\",\r\n    \"descripcion\" : \"Instalación: Instala tuberías de gas, conexiones y aparatos que funcionan con gas, asegurando su correcto funcionamiento y seguridad. Reparación: Repara fugas, conexiones defectuosas y otros problemas en sistemas de gas. Pruebas: Realiza pruebas de hermeticidad y verifica el correcto funcionamiento de los sistemas de gas.\",\r\n    \"activo\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/servicios/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"servicios",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 21:47:51 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "386"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 7,\n    \"nombre\": \"Gasista\",\n    \"descripcion\": \"Instalación: Instala tuberías de gas, conexiones y aparatos que funcionan con gas, asegurando su correcto funcionamiento y seguridad. Reparación: Repara fugas, conexiones defectuosas y otros problemas en sistemas de gas. Pruebas: Realiza pruebas de hermeticidad y verifica el correcto funcionamiento de los sistemas de gas.\",\n    \"activo\": true\n}"
+				}
+			]
 		},
 		{
 			"name": "UpdateServicio",
@@ -57,7 +222,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDMzNDEwLCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6ImIzMWNiYmY5M2I1NjQxNmI5YjdjYTBmNDI4NWQ2NGNkIiwidXNlcl9pZCI6MX0.qjzvvBthoMvG9fDMVzD2o3e2Jeh-nb9i10g5sB2EPrQ",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4Mjk3Njk4LCJpYXQiOjE3NDgyOTU4OTgsImp0aSI6IjZkNmIxNDBmMTlhNTRkNjc4NDJhZDA3NDliMDZkMDVkIiwidXNlcl9pZCI6MX0.fMYlcSsUil0WSVWAGoer6VHeYMhE9xfl3-53m1Vb4DU",
 							"type": "string"
 						}
 					]
@@ -66,7 +231,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \r\n}\r\n\r\n    ",
+					"raw": "{\r\n    \"activo\": \"false\"\r\n}\r\n\r\n    ",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -74,7 +239,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/view-set/servicios/1/",
+					"raw": "http://127.0.0.1:8000/view-set/servicios/1/?v=1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -88,10 +253,103 @@
 						"servicios",
 						"1",
 						""
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "1"
+						}
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "UpdateServicioRecolector",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"activo\": \"false\"\r\n}\r\n\r\n    ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/servicios/1/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"servicios",
+								"1",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 21:52:42 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "191"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"nombre\": \"Recolector\",\n    \"descripcion\": \"Servicio: Se encarga de recoger los residuos generados en los hogares y los lleva a un lugar de tratamiento o disposición final.\",\n    \"activo\": false\n}"
+				}
+			]
 		},
 		{
 			"name": "ListServicios",
@@ -125,7 +383,78 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "ListServicios",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/servicios/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"servicios",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 21:49:23 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2719"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 7,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"id\": 1,\n                \"nombre\": \"Recolector\",\n                \"descripcion\": \"Servicio: Se encarga de recoger los residuos generados en los hogares y los lleva a un lugar de tratamiento o disposición final.\",\n                \"activo\": true\n            },\n            {\n                \"id\": 2,\n                \"nombre\": \"Pintor\",\n                \"descripcion\": \"Servicio: Aplica pintura, barniz y otros revestimientos a superficies, tanto interiores como exteriores. Prepara las superficies a pintar, limpiándolas, lijándolas y aplicando imprimaciones. Utiliza diferentes tipos de brochas, rodillos y pistolas de pintura. Puede realizar trabajos de decoración, como la aplicación de murales o la creación de efectos especiales en las paredes.\",\n                \"activo\": true\n            },\n            {\n                \"id\": 3,\n                \"nombre\": \"Plomero\",\n                \"descripcion\": \"Instalación: Instala tuberías, accesorios y aparatos sanitarios para sistemas de agua fría, caliente, desagüe y gas. Reparación: Repara fugas, obstrucciones y otros problemas en sistemas de plomería, utilizando herramientas y técnicas específicas.\",\n                \"activo\": true\n            },\n            {\n                \"id\": 4,\n                \"nombre\": \"Electricista\",\n                \"descripcion\": \"Instalaciones: Instalación de cableado, interruptores, enchufes, sistemas de iluminación, sistemas de seguridad (cámaras, alarmas), redes de datos y telecomunicaciones. Reparaciones: Arreglo de cortocircuitos, sobrecargas, problemas con enchufes y tomacorrientes, luces parpadeantes, fusibles fundidos, disyuntores disparados, problemas con el cableado. Mantenimiento:Revisión general de la red eléctrica, mantenimiento preventivo y correctivo de sistemas eléctricos.\",\n                \"activo\": true\n            },\n            {\n                \"id\": 5,\n                \"nombre\": \"Jardinero\",\n                \"descripcion\": \"Diseño: Diseña y planifica espacios verdes, considerando factores como clima, tipo de suelo y preferencias del cliente. Plantación: Planta y trasplanta árboles, arbustos, flores y otras plantas. Mantenimiento: Realiza tareas de mantenimiento como riego, podar, fertilizar y controlar plagas. Cuidado del césped: Corta, limpia y fertiliza el césped, utilizando herramientas y maquinaria adecuada.\",\n                \"activo\": true\n            },\n            {\n                \"id\": 6,\n                \"nombre\": \"Albañil\",\n                \"descripcion\": \"Construcción: Construye paredes, pisos, cimientos y otras estructuras utilizando ladrillos, bloques de cemento, piedra y otros materiales. Reparación: Repara estructuras dañadas, rellenando fisuras, reemplazando ladrillos y otros materiales.\",\n                \"activo\": true\n            },\n            {\n                \"id\": 7,\n                \"nombre\": \"Gasista\",\n                \"descripcion\": \"Instalación: Instala tuberías de gas, conexiones y aparatos que funcionan con gas, asegurando su correcto funcionamiento y seguridad. Reparación: Repara fugas, conexiones defectuosas y otros problemas en sistemas de gas. Pruebas: Realiza pruebas de hermeticidad y verifica el correcto funcionamiento de los sistemas de gas.\",\n                \"activo\": true\n            }\n        ]\n    }\n}"
+				}
+			]
 		},
 		{
 			"name": "deleteServicio",
@@ -135,7 +464,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDMzNDEwLCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6ImIzMWNiYmY5M2I1NjQxNmI5YjdjYTBmNDI4NWQ2NGNkIiwidXNlcl9pZCI6MX0.qjzvvBthoMvG9fDMVzD2o3e2Jeh-nb9i10g5sB2EPrQ",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4Mjk3Njk4LCJpYXQiOjE3NDgyOTU4OTgsImp0aSI6IjZkNmIxNDBmMTlhNTRkNjc4NDJhZDA3NDliMDZkMDVkIiwidXNlcl9pZCI6MX0.fMYlcSsUil0WSVWAGoer6VHeYMhE9xfl3-53m1Vb4DU",
 							"type": "string"
 						}
 					]
@@ -143,7 +472,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/view-set/servicios/6/",
+					"raw": "http://127.0.0.1:8000/view-set/servicios/8/?v=1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -155,12 +484,92 @@
 					"path": [
 						"view-set",
 						"servicios",
-						"6",
+						"8",
 						""
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "1"
+						}
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "deleteServicioIns.AA",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/servicios/8/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"servicios",
+								"8",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 21:54:39 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
 		},
 		{
 			"name": "getServicio",
@@ -170,7 +579,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MDMzNDEwLCJpYXQiOjE3NDgwMzIwMjMsImp0aSI6ImIzMWNiYmY5M2I1NjQxNmI5YjdjYTBmNDI4NWQ2NGNkIiwidXNlcl9pZCI6MX0.qjzvvBthoMvG9fDMVzD2o3e2Jeh-nb9i10g5sB2EPrQ",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4Mjk3Njk4LCJpYXQiOjE3NDgyOTU4OTgsImp0aSI6IjZkNmIxNDBmMTlhNTRkNjc4NDJhZDA3NDliMDZkMDVkIiwidXNlcl9pZCI6MX0.fMYlcSsUil0WSVWAGoer6VHeYMhE9xfl3-53m1Vb4DU",
 							"type": "string"
 						}
 					]
@@ -178,7 +587,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/view-set/servicios/3/",
+					"raw": "http://127.0.0.1:8000/view-set/servicios/1/?v=1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -190,12 +599,173 @@
 					"path": [
 						"view-set",
 						"servicios",
-						"3",
+						"1",
 						""
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "1"
+						}
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "getServicioPlomero",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/servicios/3/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"servicios",
+								"3",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 21:50:19 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "314"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 3,\n    \"nombre\": \"Plomero\",\n    \"descripcion\": \"Instalación: Instala tuberías, accesorios y aparatos sanitarios para sistemas de agua fría, caliente, desagüe y gas. Reparación: Repara fugas, obstrucciones y otros problemas en sistemas de plomería, utilizando herramientas y técnicas específicas.\",\n    \"activo\": true\n}"
+				},
+				{
+					"name": "getServicioJardinero",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/servicios/5/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"servicios",
+								"5",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 21:51:17 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "462"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 5,\n    \"nombre\": \"Jardinero\",\n    \"descripcion\": \"Diseño: Diseña y planifica espacios verdes, considerando factores como clima, tipo de suelo y preferencias del cliente. Plantación: Planta y trasplanta árboles, arbustos, flores y otras plantas. Mantenimiento: Realiza tareas de mantenimiento como riego, podar, fertilizar y controlar plagas. Cuidado del césped: Corta, limpia y fertiliza el césped, utilizando herramientas y maquinaria adecuada.\",\n    \"activo\": true\n}"
+				}
+			]
 		}
 	]
 }
