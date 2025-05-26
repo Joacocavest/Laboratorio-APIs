@@ -16,6 +16,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     filter_backends= [DjangoFilterBackend, filters.OrderingFilter]
     filterset_class= UsuarioFilter
     ordering_fields= ['username', 'servicio']
+    lookup_field = 'uuid'
     #authentication_classes=[SessionAuthentication,BasicAuthentication]
     #permission_classes=[IsAuthenticated|ReadOnly]
     # permission_classes = [permissions.IsAuthenticated, permissions.DjangoModelPermissions]
