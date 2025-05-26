@@ -3,6 +3,7 @@ from rest_framework import serializers
 from apps.solicitudes.models import Solicitudes
 from apps.servicios.models import Servicio
 from apps.usuarios.models import Usuario
+from servicios_domicilio.core.utils import obtener_coordenadas
 
 
 class SolicitudSerializer(serializers.ModelSerializer):
@@ -24,9 +25,17 @@ class SolicitudSerializer(serializers.ModelSerializer):
     class Meta:
         model = Solicitudes
         fields = [
-            'id', 'cliente', 'trabajador', 'servicio',
-            'direccion', 'estado', 'fecha_creacion', 'fecha_solicitada',
-            'descripcion'
+            'uuid', 
+            'cliente', 
+            'trabajador', 
+            'servicio',
+            'direccion',
+            'lat',
+            'lon',
+            'estado', 
+            'fecha_creacion', 
+            'fecha_solicitada',
+            'descripcion',
         ]
 
         read_only_fields = [
@@ -35,7 +44,6 @@ class SolicitudSerializer(serializers.ModelSerializer):
             'cliente',
             'trabajador',
             'servicio',
-            'descripcion'
         ]
     
     def validate_fecha_solicitada(self, value):
@@ -57,7 +65,7 @@ class SolicitudSerializer(serializers.ModelSerializer):
         if user.tipo == 'cliente':
             validated_data = {
                 key: value for key, value in validated_data.items()
-                if key == 'fecha_solicitada'
+                if key in ['fecha_solicitada', 'descripcion']
             }
         elif user.tipo == 'trabajador':
             validated_data = {
@@ -66,3 +74,11 @@ class SolicitudSerializer(serializers.ModelSerializer):
             }
         #Si es admin, no filtramos nada
         return super().update(instance, validated_data)
+    
+    def create(self, validated_data):
+        direccion = validated_data.get('direccion')
+        coords = obtener_coordenadas(direccion)
+        if coords:
+            validated_data['lat'] = coords['lat']
+            validated_data['lon'] = coords['lon']
+        return super().create(validated_data)

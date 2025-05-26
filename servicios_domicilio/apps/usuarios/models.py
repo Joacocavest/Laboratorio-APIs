@@ -13,6 +13,8 @@ class Usuario(AbstractUser):
 
     tipo = models.CharField(max_length=20, choices=TIPO)
     domicilio= models.CharField(max_length=250, blank=True, unique=True)
+    lat = models.FloatField(null=True, blank=True)
+    lon = models.FloatField(null=True, blank=True)
     email = models.EmailField(max_length=100)
     telefono = models.CharField(max_length=10, blank=True)
     servicio = models.ForeignKey(
