@@ -161,12 +161,14 @@ REST_FRAMEWORK = {
 
     'ALLOWED_VERSIONS': ['1', '2'],
 
-    # 'DEFAULT_VERSION': '1',
+    'DEFAULT_VERSION': '1',
 
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend',
         'rest_framework.filters.OrderingFilter',
     ],
 }
+
+GOOGLE_MAPS_API_KEY = 'AIzaSyA5OwfzfHSIPLMn20rbGO8q_xiIzJNQu9I'
 
 

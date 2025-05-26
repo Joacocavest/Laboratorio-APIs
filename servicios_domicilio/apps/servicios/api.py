@@ -6,6 +6,12 @@ class ServicioViewSet(viewsets.ModelViewSet):
     queryset = Servicio.objects.all()
     serializer_class = ServicioSerializer
 
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [permissions.IsAuthenticated()]  # todos los logueados pueden ver
+        else:
+            return [permissions.IsAdminUser()]  # solo admins pueden modificar
+
     def list(self, request, *args, **kwargs):
         if request.version == '1':
             # lógica para versión 1 (podés cambiar serializer o datos)

@@ -1,9 +1,11 @@
+from uuid import uuid4
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.exceptions import ValidationError
 # Create your models here.
 
 class Usuario(AbstractUser):
+    uuid = models.UUIDField(default=uuid4, editable=False, unique=True)
     TIPO = [
         ('cliente', 'Cliente'),
         ('trabajador', 'Trabajador')
@@ -30,3 +32,4 @@ class Usuario(AbstractUser):
 
     def __str__(self):
         return f'{self.username} - ({self.tipo}) - ({self.servicio})'
+    
