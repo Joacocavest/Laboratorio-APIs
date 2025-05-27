@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "ab4bc9a9-5aa4-4c76-89a9-79757c260314",
+		"_postman_id": "809958d8-7aa3-4b4d-ba1d-12154e5423b2",
 		"name": "UsuarioLabs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "43264264"
+		"_exporter_id": "43545854",
+		"_collection_link": "https://joacocavest.postman.co/workspace/Apis~f51c3bbb-c91d-4348-8b19-fa41e94ea49b/collection/43545854-809958d8-7aa3-4b4d-ba1d-12154e5423b2?action=share&source=collection_link&creator=43545854"
 	},
 	"item": [
 		{
@@ -14,7 +15,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4Mjk3Njk4LCJpYXQiOjE3NDgyOTU4OTgsImp0aSI6IjZkNmIxNDBmMTlhNTRkNjc4NDJhZDA3NDliMDZkMDVkIiwidXNlcl9pZCI6MX0.fMYlcSsUil0WSVWAGoer6VHeYMhE9xfl3-53m1Vb4DU",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzA3ODE2LCJpYXQiOjE3NDgzMDYwMTYsImp0aSI6ImQ5YzVmYTA4YmQyZjQ4NmNiOGQ0Yjg5ZTMwYzczYWY4IiwidXNlcl9pZCI6MX0.nkuiNI4yGiWmh3dzqEggS2XNZgGqUjBPC5WE74xewEw",
 							"type": "string"
 						}
 					]

@@ -15,7 +15,7 @@ __pycache__/
 *$py.class
 
 # Base de datos SQLite (solo para desarrollo)
-db.sqlite3
+#db.sqlite3
 
 # Archivos generados por Django o en producción
 /media/
@@ -54,4 +54,4 @@ Thumbs.db
 *.orig
 
 # Carpeta Postman (si tiene archivos temporales, cambiar según tu uso)
-Postman/tmp/
+#Postman/tmp/
