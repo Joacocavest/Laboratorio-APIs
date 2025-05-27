@@ -17,10 +17,6 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     filterset_class= UsuarioFilter
     ordering_fields= ['username', 'servicio']
     lookup_field = 'uuid'
-    #authentication_classes=[SessionAuthentication,BasicAuthentication]
-    #permission_classes=[IsAuthenticated|ReadOnly]
-    # permission_classes = [permissions.IsAuthenticated, permissions.DjangoModelPermissions]
-    # permission_classes = [IsAuthenticated, EsCliente]
 
     def perform_create(self, serializer):
         serializer.save()
