@@ -29,21 +29,26 @@ class SolicitudSerializer(serializers.ModelSerializer):
             'cliente', 
             'trabajador', 
             'servicio',
-            'direccion',
-            'lat',
-            'lon',
+            'direccion', 
             'estado', 
             'fecha_creacion', 
             'fecha_solicitada',
-            'descripcion',
+            'descripcion', 
+            'fecha_confirmacion', 
+            'fecha_rechazo',
+            'fecha_finalizo'
         ]
-
         read_only_fields = [
-            'id',
-            'fecha_creacion',
-            'cliente',
+            'id', 
+            'fecha_creacion', 
+            'cliente', 
             'trabajador',
-            'servicio',
+            'servicio', 
+            'descripcion', 
+            'fecha_confirmacion', 
+            'fecha_rechazo',
+            'fecha_finalizo',
+            'estado'
         ]
     
     def validate_fecha_solicitada(self, value):
@@ -70,7 +75,7 @@ class SolicitudSerializer(serializers.ModelSerializer):
         elif user.tipo == 'trabajador':
             validated_data = {
                 key: value for key, value in validated_data.items()
-                if key in ['fecha_solicitada', 'estado']
+                if key in ['fecha_solicitada']
             }
         #Si es admin, no filtramos nada
         return super().update(instance, validated_data)

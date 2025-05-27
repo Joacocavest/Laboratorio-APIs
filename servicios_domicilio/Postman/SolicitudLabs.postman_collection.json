@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "9dd90c40-0fad-476e-9ce6-e068cc1b122c",
+		"_postman_id": "fb3a37df-71b3-4f3f-89ef-bf85b064a598",
 		"name": "SolicitudLabs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "43264264"
+		"_exporter_id": "43545854",
+		"_collection_link": "https://joacocavest.postman.co/workspace/Apis~f51c3bbb-c91d-4348-8b19-fa41e94ea49b/collection/43545854-fb3a37df-71b3-4f3f-89ef-bf85b064a598?action=share&source=collection_link&creator=43545854"
 	},
 	"item": [
 		{
@@ -14,7 +15,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzAxNjAxLCJpYXQiOjE3NDgyOTk4MDEsImp0aSI6IjE5ODAyZmMyMjljNzQ2ZmNiYTk4NGYyYWIwYWEzNDg0IiwidXNlcl9pZCI6Mn0.bH9q5pgCtpGxwHMyP3Fjy9ps2BJ2iQmoc9FfoXYpE3Y",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzEzOTgzLCJpYXQiOjE3NDgzMTIxODMsImp0aSI6IjJlN2M2NWI0NjhhMTQ0MGY5YjVjNDljNGJmZjFhYzU0IiwidXNlcl9pZCI6NH0.72sHBIbR8WAMnbpHcXww2OwCgU-lEUzUiFlXVUppbm4",
 							"type": "string"
 						}
 					]
@@ -283,7 +284,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzAxNzg0LCJpYXQiOjE3NDgyOTk5ODQsImp0aSI6ImEzODJhOGQzNjEzZTQ4MzdhZGFlYTJjMzFiNGYxZWZiIiwidXNlcl9pZCI6M30.9Vs4066eDiyI9X_9soyNR0ZFhYwQeiS5Ku4qzIQD5uU",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzA3OTY3LCJpYXQiOjE3NDgzMDYxNjcsImp0aSI6IjdlMGE4MGUzMTJjYzQ5YWFhYzhhNTE2Zjk3YzM0ODBkIiwidXNlcl9pZCI6M30.Xrj_zvSrWJUN5Rzuhh8qYTkkBpsKdEnV1n1zpK9TcEk",
 							"type": "string"
 						}
 					]
@@ -292,7 +293,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"cliente\": 9,\r\n  \"trabajador\": \"PintosAbel\",\r\n  \"servicio\": \"Albañil\",\r\n  \"direccion\": \"Barrio Los Aromos, casa 24\",\r\n  \"fecha_solicitada\": \"2025-06-30\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Se me cae la pared de la cocina.\"\r\n}",
+					"raw": "{\r\n  \"cliente\": \"EspinozaGuillermo\",\r\n  \"trabajador\": \"JorgeRojas\",\r\n  \"servicio\": \"Plomero\",\r\n  \"direccion\": \"Esquiu 633\",\r\n  \"fecha_solicitada\": \"2025-07-15\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Tengo humedad en la pared del baño\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -614,7 +615,7 @@
 						}
 					],
 					"cookie": [],
-					"body": null
+					"body": ""
 				},
 				{
 					"name": "DeleteSolicitudByAdmin",
@@ -691,7 +692,7 @@
 						}
 					],
 					"cookie": [],
-					"body": null
+					"body": ""
 				},
 				{
 					"name": "DeleteSolicitudByTrabajador",
@@ -768,7 +769,7 @@
 						}
 					],
 					"cookie": [],
-					"body": null
+					"body": ""
 				}
 			]
 		},
@@ -780,7 +781,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzAyMzMxLCJpYXQiOjE3NDgzMDA1MzEsImp0aSI6IjdlNGZmNzYwMWQzOTQwNjFhYTgzODlkZWY4M2RmYjZhIiwidXNlcl9pZCI6M30.RYQmvgesKr6w_tN9yaGEWz1GQo9PLLf9FKjPwBakaYg",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzEzOTgzLCJpYXQiOjE3NDgzMTIxODMsImp0aSI6IjJlN2M2NWI0NjhhMTQ0MGY5YjVjNDljNGJmZjFhYzU0IiwidXNlcl9pZCI6NH0.72sHBIbR8WAMnbpHcXww2OwCgU-lEUzUiFlXVUppbm4",
 							"type": "string"
 						}
 					]
@@ -789,7 +790,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"fecha_solicitada\": \"2025-06-30\",\r\n    \"descripcion\" : \"se me cayo un arbol.\"\r\n}",
+					"raw": "{\r\n    \"estado\": \"pendiente\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -797,7 +798,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/view-set/solicitudes/0fc9b146-1405-4996-851d-16278477bd53/?v=1",
+					"raw": "http://127.0.0.1:8000/view-set/solicitudes/257962d9-d7cb-45d7-a5ae-f651e64e879b/?v=1",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -809,7 +810,7 @@
 					"path": [
 						"view-set",
 						"solicitudes",
-						"0fc9b146-1405-4996-851d-16278477bd53",
+						"257962d9-d7cb-45d7-a5ae-f651e64e879b",
 						""
 					],
 					"query": [
@@ -1078,6 +1079,393 @@
 					],
 					"cookie": [],
 					"body": "{\n    \"uuid\": \"0fc9b146-1405-4996-851d-16278477bd53\",\n    \"cliente\": \"EspinozaGuillermo\",\n    \"trabajador\": \"CaviedesJoaquin\",\n    \"servicio\": \"Jardinero\",\n    \"direccion\": \"Av. 41, Catamarca, Argentina\",\n    \"lat\": -28.4258343,\n    \"lon\": -65.7084259,\n    \"estado\": \"finalizada\",\n    \"fecha_creacion\": \"2025-05-26\",\n    \"fecha_solicitada\": \"2025-06-29\",\n    \"descripcion\": \"se me cayo un arbol.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "AceptarSolicitud",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzE0NTQzLCJpYXQiOjE3NDgzMTI3NDMsImp0aSI6ImI2YmRjNDNlMDgxYjQ1ODNiYzdlNDEyNzQxNmE3ZjQ2IiwidXNlcl9pZCI6NH0.ZhCxvwAqEFwGc9KwhQ5e7rzhK_VaYxIhm-B4yBxdPzo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cliente\": \"EspinozaGuillermo\",\r\n  \"trabajador\": \"JorgeRojas\",\r\n  \"servicio\": \"Plomero\",\r\n  \"direccion\": \"Esquiu 633\",\r\n  \"fecha_solicitada\": \"2025-06-15\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Se me tranco el baño.\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/solicitudes/257962d9-d7cb-45d7-a5ae-f651e64e879b/aceptar/?v=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"solicitudes",
+						"257962d9-d7cb-45d7-a5ae-f651e64e879b",
+						"aceptar",
+						""
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "AceptarSolicitud",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": \"EspinozaGuillermo\",\r\n  \"trabajador\": \"JorgeRojas\",\r\n  \"servicio\": \"Plomero\",\r\n  \"direccion\": \"Esquiu 633\",\r\n  \"fecha_solicitada\": \"2025-06-15\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Se me tranco el baño.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/solicitudes/6503c0b7-8636-462b-90be-ce1349ba7d50/aceptar/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"solicitudes",
+								"6503c0b7-8636-462b-90be-ce1349ba7d50",
+								"aceptar",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 00:40:25 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "47"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"mensaje\": \"Solicitud aceptada correctamente.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "FinalizarSolicitud",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzE0NTQzLCJpYXQiOjE3NDgzMTI3NDMsImp0aSI6ImI2YmRjNDNlMDgxYjQ1ODNiYzdlNDEyNzQxNmE3ZjQ2IiwidXNlcl9pZCI6NH0.ZhCxvwAqEFwGc9KwhQ5e7rzhK_VaYxIhm-B4yBxdPzo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cliente\": \"EspinozaGuillermo\",\r\n  \"trabajador\": \"JorgeRojas\",\r\n  \"servicio\": \"Plomero\",\r\n  \"direccion\": \"Esquiu 633\",\r\n  \"fecha_solicitada\": \"2025-06-15\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Se me tranco el baño.\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/solicitudes/257962d9-d7cb-45d7-a5ae-f651e64e879b/finalizar/?v=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"solicitudes",
+						"257962d9-d7cb-45d7-a5ae-f651e64e879b",
+						"finalizar",
+						""
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "FinalizarSolicitud",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": \"EspinozaGuillermo\",\r\n  \"trabajador\": \"JorgeRojas\",\r\n  \"servicio\": \"Plomero\",\r\n  \"direccion\": \"Esquiu 633\",\r\n  \"fecha_solicitada\": \"2025-06-15\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Se me tranco el baño.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/solicitudes/6503c0b7-8636-462b-90be-ce1349ba7d50/finalizar/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"solicitudes",
+								"6503c0b7-8636-462b-90be-ce1349ba7d50",
+								"finalizar",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 00:51:17 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "49"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"mensaje\": \"Solicitud finalizada correctamente.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "RechazarSolicitud",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzA4NDg5LCJpYXQiOjE3NDgzMDY2ODksImp0aSI6ImUyNjg2YThlYmM3NjQ1ZDZhMmI4NWEyN2FjYjQzMTYwIiwidXNlcl9pZCI6NH0.CooWESL2Wkn_xq3-w0tpHkht8StRiSVsCqj9WWCOfOM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cliente\": \"EspinozaGuillermo\",\r\n  \"trabajador\": \"JorgeRojas\",\r\n  \"servicio\": \"Plomero\",\r\n  \"direccion\": \"Esquiu 633\",\r\n  \"fecha_solicitada\": \"2025-06-15\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Se me tranco el baño.\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/solicitudes/257962d9-d7cb-45d7-a5ae-f651e64e879b/rechazar/?v=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"solicitudes",
+						"257962d9-d7cb-45d7-a5ae-f651e64e879b",
+						"rechazar",
+						""
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "RechazarSolicitud",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": \"EspinozaGuillermo\",\r\n  \"trabajador\": \"JorgeRojas\",\r\n  \"servicio\": \"Plomero\",\r\n  \"direccion\": \"Esquiu 633\",\r\n  \"fecha_solicitada\": \"2025-06-15\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Se me tranco el baño.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/solicitudes/257962d9-d7cb-45d7-a5ae-f651e64e879b/rechazar/?v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"solicitudes",
+								"257962d9-d7cb-45d7-a5ae-f651e64e879b",
+								"rechazar",
+								""
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 00:44:59 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "48"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"mensaje\": \"Solicitud rechazada correctamente.\"\n}"
 				}
 			]
 		}

@@ -1,0 +1,1342 @@
+{
+	"info": {
+		"_postman_id": "2a1554c5-7b0f-4183-9a04-7e31d6404531",
+		"name": "filtros y ordenamientos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43545854",
+		"_collection_link": "https://joacocavest.postman.co/workspace/Apis~f51c3bbb-c91d-4348-8b19-fa41e94ea49b/collection/43545854-2a1554c5-7b0f-4183-9a04-7e31d6404531?action=share&source=collection_link&creator=43545854"
+	},
+	"item": [
+		{
+			"name": "UsuarioFiltro",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzE1NjA4LCJpYXQiOjE3NDgzMTM4MDgsImp0aSI6ImFjNzFkZjFhZDUzMDRlNjU5NjA2YmE3NThiM2I1MDdkIiwidXNlcl9pZCI6MX0.twbsIECYNzgeMf0RuQjC8D5dzoxzPQgkuOkVnPFFrjM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cliente\": \"EspinozaGuillermo\",\r\n  \"trabajador\": \"JorgeRojas\",\r\n  \"servicio\": \"Plomero\",\r\n  \"direccion\": \"Esquiu 633\",\r\n  \"fecha_solicitada\": \"2025-07-15\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Tengo humedad en la pared del baño\"\r\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/usuarios/?servicio=Jar&v=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"usuarios",
+						""
+					],
+					"query": [
+						{
+							"key": "servicio",
+							"value": "Jar"
+						},
+						{
+							"key": "v",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "filtroClienteByAdmin",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": \"EspinozaGuillermo\",\r\n  \"trabajador\": \"JorgeRojas\",\r\n  \"servicio\": \"Plomero\",\r\n  \"direccion\": \"Esquiu 633\",\r\n  \"fecha_solicitada\": \"2025-07-15\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Tengo humedad en la pared del baño\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/?tipo=cliente&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								""
+							],
+							"query": [
+								{
+									"key": "tipo",
+									"value": "cliente"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 02:44:15 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "569"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 2,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"b1925b52-3731-4fab-a7fa-b8db5831c1c8\",\n                \"username\": \"EspinozaGuillermo\",\n                \"tipo\": \"cliente\",\n                \"domicilio\": \"Av. Ramon R. Lopez, Argentina\",\n                \"lat\": -37.55239,\n                \"lon\": -59.6266,\n                \"email\": \"espinozaguillermo@gmail.com\",\n                \"servicio\": null,\n                \"telefono\": \"3834627731\"\n            },\n            {\n                \"uuid\": \"21d360b0-3dbb-402d-939b-e5044fb64e2b\",\n                \"username\": \"EugeQuevedo\",\n                \"tipo\": \"cliente\",\n                \"domicilio\": \"Av. Galindez, Catamarca, Argentina\",\n                \"lat\": -28.4668715,\n                \"lon\": -65.797505,\n                \"email\": \"eugequevedo@gmail.com\",\n                \"servicio\": null,\n                \"telefono\": \"3834624852\"\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "filtroTrabajadorByAdmin",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": \"EspinozaGuillermo\",\r\n  \"trabajador\": \"JorgeRojas\",\r\n  \"servicio\": \"Plomero\",\r\n  \"direccion\": \"Esquiu 633\",\r\n  \"fecha_solicitada\": \"2025-07-15\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Tengo humedad en la pared del baño\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/?tipo=trabajador&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								""
+							],
+							"query": [
+								{
+									"key": "tipo",
+									"value": "trabajador"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 02:45:03 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "575"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 2,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"528773a0-6bc9-4226-afb0-6dcc1d33ac86\",\n                \"username\": \"CaviedesJoaquin\",\n                \"tipo\": \"trabajador\",\n                \"domicilio\": \"Av. Sal Gema 1635, Argentina\",\n                \"lat\": -28.4946078,\n                \"lon\": -65.8066178,\n                \"email\": \"joaquincaviedes@gmail.com\",\n                \"servicio\": \"Jardinero\",\n                \"telefono\": \"3834238214\"\n            },\n            {\n                \"uuid\": \"4f3c90a6-1205-4ae0-be50-02ceb01aef29\",\n                \"username\": \"JorgeRojas\",\n                \"tipo\": \"trabajador\",\n                \"domicilio\": \"Av. Belgrano, Argentina\",\n                \"lat\": -34.6904453,\n                \"lon\": -58.3394109,\n                \"email\": \"jorgerojas@gmail.com\",\n                \"servicio\": \"Plomero\",\n                \"telefono\": \"3834624851\"\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "filtroNombreByAdmin",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": \"EspinozaGuillermo\",\r\n  \"trabajador\": \"JorgeRojas\",\r\n  \"servicio\": \"Plomero\",\r\n  \"direccion\": \"Esquiu 633\",\r\n  \"fecha_solicitada\": \"2025-07-15\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Tengo humedad en la pared del baño\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/?nombre=joa&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								""
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "joa"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 02:46:33 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "333"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 1,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"528773a0-6bc9-4226-afb0-6dcc1d33ac86\",\n                \"username\": \"CaviedesJoaquin\",\n                \"tipo\": \"trabajador\",\n                \"domicilio\": \"Av. Sal Gema 1635, Argentina\",\n                \"lat\": -28.4946078,\n                \"lon\": -65.8066178,\n                \"email\": \"joaquincaviedes@gmail.com\",\n                \"servicio\": \"Jardinero\",\n                \"telefono\": \"3834238214\"\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "filtroTipoPorNombreByAdmin",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": \"EspinozaGuillermo\",\r\n  \"trabajador\": \"JorgeRojas\",\r\n  \"servicio\": \"Plomero\",\r\n  \"direccion\": \"Esquiu 633\",\r\n  \"fecha_solicitada\": \"2025-07-15\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Tengo humedad en la pared del baño\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/?nombre=joa&tipo=trabajador&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								""
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "joa"
+								},
+								{
+									"key": "tipo",
+									"value": "trabajador"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 02:48:24 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "333"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 1,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"528773a0-6bc9-4226-afb0-6dcc1d33ac86\",\n                \"username\": \"CaviedesJoaquin\",\n                \"tipo\": \"trabajador\",\n                \"domicilio\": \"Av. Sal Gema 1635, Argentina\",\n                \"lat\": -28.4946078,\n                \"lon\": -65.8066178,\n                \"email\": \"joaquincaviedes@gmail.com\",\n                \"servicio\": \"Jardinero\",\n                \"telefono\": \"3834238214\"\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "filtroServicioByAdmin",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cliente\": \"EspinozaGuillermo\",\r\n  \"trabajador\": \"JorgeRojas\",\r\n  \"servicio\": \"Plomero\",\r\n  \"direccion\": \"Esquiu 633\",\r\n  \"fecha_solicitada\": \"2025-07-15\",\r\n  \"estado\": \"pendiente\",\r\n  \"descripcion\": \"Tengo humedad en la pared del baño\"\r\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/?servicio=Jar&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								""
+							],
+							"query": [
+								{
+									"key": "servicio",
+									"value": "Jar"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 02:49:42 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "333"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 1,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"528773a0-6bc9-4226-afb0-6dcc1d33ac86\",\n                \"username\": \"CaviedesJoaquin\",\n                \"tipo\": \"trabajador\",\n                \"domicilio\": \"Av. Sal Gema 1635, Argentina\",\n                \"lat\": -28.4946078,\n                \"lon\": -65.8066178,\n                \"email\": \"joaquincaviedes@gmail.com\",\n                \"servicio\": \"Jardinero\",\n                \"telefono\": \"3834238214\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "SolicitudesFiltro",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzE1NjA4LCJpYXQiOjE3NDgzMTM4MDgsImp0aSI6ImFjNzFkZjFhZDUzMDRlNjU5NjA2YmE3NThiM2I1MDdkIiwidXNlcl9pZCI6MX0.twbsIECYNzgeMf0RuQjC8D5dzoxzPQgkuOkVnPFFrjM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/solicitudes/?fecha_creacion=2025-05-26&v=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"solicitudes",
+						""
+					],
+					"query": [
+						{
+							"key": "fecha_creacion",
+							"value": "2025-05-26"
+						},
+						{
+							"key": "v",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "filtroClientePorNombre",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/solicitudes/?cliente=Guille&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"solicitudes",
+								""
+							],
+							"query": [
+								{
+									"key": "cliente",
+									"value": "Guille"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 02:55:49 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1186"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 3,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"0fc9b146-1405-4996-851d-16278477bd53\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"CaviedesJoaquin\",\n                \"servicio\": \"Jardinero\",\n                \"direccion\": \"Av. 41, Catamarca, Argentina\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-06-29\",\n                \"descripcion\": \"se me cayo un arbol.\",\n                \"fecha_confirmacion\": null,\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": null\n            },\n            {\n                \"uuid\": \"6503c0b7-8636-462b-90be-ce1349ba7d50\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"JorgeRojas\",\n                \"servicio\": \"Plomero\",\n                \"direccion\": \"Esquiu 633\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-06-15\",\n                \"descripcion\": \"Se me tranco el baño.\",\n                \"fecha_confirmacion\": null,\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": null\n            },\n            {\n                \"uuid\": \"257962d9-d7cb-45d7-a5ae-f651e64e879b\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"JorgeRojas\",\n                \"servicio\": \"Plomero\",\n                \"direccion\": \"Esquiu 633\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-07-15\",\n                \"descripcion\": \"Tengo humedad en la pared del baño\",\n                \"fecha_confirmacion\": \"2025-05-27T02:25:53.931969Z\",\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": \"2025-05-27T02:27:29.950821Z\"\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "filtroTrabajadorPorNombre",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/solicitudes/?trabajador=joa&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"solicitudes",
+								""
+							],
+							"query": [
+								{
+									"key": "trabajador",
+									"value": "joa"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 03:00:48 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "439"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 1,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"0fc9b146-1405-4996-851d-16278477bd53\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"CaviedesJoaquin\",\n                \"servicio\": \"Jardinero\",\n                \"direccion\": \"Av. 41, Catamarca, Argentina\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-06-29\",\n                \"descripcion\": \"se me cayo un arbol.\",\n                \"fecha_confirmacion\": null,\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": null\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "filtroServicio",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/solicitudes/?servicio=plo&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"solicitudes",
+								""
+							],
+							"query": [
+								{
+									"key": "servicio",
+									"value": "plo"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 03:01:44 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "821"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 2,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"6503c0b7-8636-462b-90be-ce1349ba7d50\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"JorgeRojas\",\n                \"servicio\": \"Plomero\",\n                \"direccion\": \"Esquiu 633\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-06-15\",\n                \"descripcion\": \"Se me tranco el baño.\",\n                \"fecha_confirmacion\": null,\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": null\n            },\n            {\n                \"uuid\": \"257962d9-d7cb-45d7-a5ae-f651e64e879b\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"JorgeRojas\",\n                \"servicio\": \"Plomero\",\n                \"direccion\": \"Esquiu 633\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-07-15\",\n                \"descripcion\": \"Tengo humedad en la pared del baño\",\n                \"fecha_confirmacion\": \"2025-05-27T02:25:53.931969Z\",\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": \"2025-05-27T02:27:29.950821Z\"\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "filtroFechaSolicitada",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/solicitudes/?fecha_solicitada=2025-06-29&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"solicitudes",
+								""
+							],
+							"query": [
+								{
+									"key": "fecha_solicitada",
+									"value": "2025-06-29"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 03:08:18 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "439"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 1,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"0fc9b146-1405-4996-851d-16278477bd53\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"CaviedesJoaquin\",\n                \"servicio\": \"Jardinero\",\n                \"direccion\": \"Av. 41, Catamarca, Argentina\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-06-29\",\n                \"descripcion\": \"se me cayo un arbol.\",\n                \"fecha_confirmacion\": null,\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": null\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "filtroFechaCreacion",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/solicitudes/?fecha_creacion=2025-05-26&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"solicitudes",
+								""
+							],
+							"query": [
+								{
+									"key": "fecha_creacion",
+									"value": "2025-05-26"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 03:09:24 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1186"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 3,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"0fc9b146-1405-4996-851d-16278477bd53\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"CaviedesJoaquin\",\n                \"servicio\": \"Jardinero\",\n                \"direccion\": \"Av. 41, Catamarca, Argentina\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-06-29\",\n                \"descripcion\": \"se me cayo un arbol.\",\n                \"fecha_confirmacion\": null,\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": null\n            },\n            {\n                \"uuid\": \"6503c0b7-8636-462b-90be-ce1349ba7d50\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"JorgeRojas\",\n                \"servicio\": \"Plomero\",\n                \"direccion\": \"Esquiu 633\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-06-15\",\n                \"descripcion\": \"Se me tranco el baño.\",\n                \"fecha_confirmacion\": null,\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": null\n            },\n            {\n                \"uuid\": \"257962d9-d7cb-45d7-a5ae-f651e64e879b\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"JorgeRojas\",\n                \"servicio\": \"Plomero\",\n                \"direccion\": \"Esquiu 633\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-07-15\",\n                \"descripcion\": \"Tengo humedad en la pared del baño\",\n                \"fecha_confirmacion\": \"2025-05-27T02:25:53.931969Z\",\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": \"2025-05-27T02:27:29.950821Z\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "SolicitudesOrdering",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzE3Mjc0LCJpYXQiOjE3NDgzMTU0NzQsImp0aSI6IjQ0MjFkNTRiZDVhYTRjY2U4MTc3NjE3MDU0MGQ0YzdiIiwidXNlcl9pZCI6MX0.UGfqfZcMGslWwOZILXVU24kCy_1_XNPw4w2e-rMEumM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/solicitudes/?ordering=fecha_creacion&v=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"solicitudes",
+						""
+					],
+					"query": [
+						{
+							"key": "ordering",
+							"value": "fecha_creacion"
+						},
+						{
+							"key": "v",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "orderingFechaSolicitada",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/solicitudes/?ordering=fecha_solicitada&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"solicitudes",
+								""
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "fecha_solicitada"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 03:12:05 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1186"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 3,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"6503c0b7-8636-462b-90be-ce1349ba7d50\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"JorgeRojas\",\n                \"servicio\": \"Plomero\",\n                \"direccion\": \"Esquiu 633\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-06-15\",\n                \"descripcion\": \"Se me tranco el baño.\",\n                \"fecha_confirmacion\": null,\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": null\n            },\n            {\n                \"uuid\": \"0fc9b146-1405-4996-851d-16278477bd53\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"CaviedesJoaquin\",\n                \"servicio\": \"Jardinero\",\n                \"direccion\": \"Av. 41, Catamarca, Argentina\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-06-29\",\n                \"descripcion\": \"se me cayo un arbol.\",\n                \"fecha_confirmacion\": null,\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": null\n            },\n            {\n                \"uuid\": \"257962d9-d7cb-45d7-a5ae-f651e64e879b\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"JorgeRojas\",\n                \"servicio\": \"Plomero\",\n                \"direccion\": \"Esquiu 633\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-07-15\",\n                \"descripcion\": \"Tengo humedad en la pared del baño\",\n                \"fecha_confirmacion\": \"2025-05-27T02:25:53.931969Z\",\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": \"2025-05-27T02:27:29.950821Z\"\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "orderingFechaCreacion",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/solicitudes/?ordering=fecha_creacion&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"solicitudes",
+								""
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "fecha_creacion"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 03:12:49 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1186"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 3,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"0fc9b146-1405-4996-851d-16278477bd53\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"CaviedesJoaquin\",\n                \"servicio\": \"Jardinero\",\n                \"direccion\": \"Av. 41, Catamarca, Argentina\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-06-29\",\n                \"descripcion\": \"se me cayo un arbol.\",\n                \"fecha_confirmacion\": null,\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": null\n            },\n            {\n                \"uuid\": \"6503c0b7-8636-462b-90be-ce1349ba7d50\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"JorgeRojas\",\n                \"servicio\": \"Plomero\",\n                \"direccion\": \"Esquiu 633\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-06-15\",\n                \"descripcion\": \"Se me tranco el baño.\",\n                \"fecha_confirmacion\": null,\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": null\n            },\n            {\n                \"uuid\": \"257962d9-d7cb-45d7-a5ae-f651e64e879b\",\n                \"cliente\": \"EspinozaGuillermo\",\n                \"trabajador\": \"JorgeRojas\",\n                \"servicio\": \"Plomero\",\n                \"direccion\": \"Esquiu 633\",\n                \"estado\": \"finalizada\",\n                \"fecha_creacion\": \"2025-05-26\",\n                \"fecha_solicitada\": \"2025-07-15\",\n                \"descripcion\": \"Tengo humedad en la pared del baño\",\n                \"fecha_confirmacion\": \"2025-05-27T02:25:53.931969Z\",\n                \"fecha_rechazo\": null,\n                \"fecha_finalizo\": \"2025-05-27T02:27:29.950821Z\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "UsuarioOrdering",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ4MzE3Mjc0LCJpYXQiOjE3NDgzMTU0NzQsImp0aSI6IjQ0MjFkNTRiZDVhYTRjY2U4MTc3NjE3MDU0MGQ0YzdiIiwidXNlcl9pZCI6MX0.UGfqfZcMGslWwOZILXVU24kCy_1_XNPw4w2e-rMEumM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-set/usuarios/?ordering=-servicio&v=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-set",
+						"usuarios",
+						""
+					],
+					"query": [
+						{
+							"key": "ordering",
+							"value": "-servicio"
+						},
+						{
+							"key": "v",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "orderingPorNombre",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/?ordering=-username&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								""
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "-username"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 03:15:03 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1243"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 5,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"ea8b050a-6767-4888-a989-478491d8579d\",\n                \"username\": \"admin\",\n                \"tipo\": \"\",\n                \"domicilio\": \"\",\n                \"lat\": null,\n                \"lon\": null,\n                \"email\": \"woney123@gmail.com\",\n                \"servicio\": null,\n                \"telefono\": \"\"\n            },\n            {\n                \"uuid\": \"4f3c90a6-1205-4ae0-be50-02ceb01aef29\",\n                \"username\": \"JorgeRojas\",\n                \"tipo\": \"trabajador\",\n                \"domicilio\": \"Av. Belgrano, Argentina\",\n                \"lat\": -34.6904453,\n                \"lon\": -58.3394109,\n                \"email\": \"jorgerojas@gmail.com\",\n                \"servicio\": \"Plomero\",\n                \"telefono\": \"3834624851\"\n            },\n            {\n                \"uuid\": \"21d360b0-3dbb-402d-939b-e5044fb64e2b\",\n                \"username\": \"EugeQuevedo\",\n                \"tipo\": \"cliente\",\n                \"domicilio\": \"Av. Galindez, Catamarca, Argentina\",\n                \"lat\": -28.4668715,\n                \"lon\": -65.797505,\n                \"email\": \"eugequevedo@gmail.com\",\n                \"servicio\": null,\n                \"telefono\": \"3834624852\"\n            },\n            {\n                \"uuid\": \"b1925b52-3731-4fab-a7fa-b8db5831c1c8\",\n                \"username\": \"EspinozaGuillermo\",\n                \"tipo\": \"cliente\",\n                \"domicilio\": \"Av. Ramon R. Lopez, Argentina\",\n                \"lat\": -37.55239,\n                \"lon\": -59.6266,\n                \"email\": \"espinozaguillermo@gmail.com\",\n                \"servicio\": null,\n                \"telefono\": \"3834627731\"\n            },\n            {\n                \"uuid\": \"528773a0-6bc9-4226-afb0-6dcc1d33ac86\",\n                \"username\": \"CaviedesJoaquin\",\n                \"tipo\": \"trabajador\",\n                \"domicilio\": \"Av. Sal Gema 1635, Argentina\",\n                \"lat\": -28.4946078,\n                \"lon\": -65.8066178,\n                \"email\": \"joaquincaviedes@gmail.com\",\n                \"servicio\": \"Jardinero\",\n                \"telefono\": \"3834238214\"\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "orderingPorServicio",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/view-set/usuarios/?ordering=-servicio&v=1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"view-set",
+								"usuarios",
+								""
+							],
+							"query": [
+								{
+									"key": "ordering",
+									"value": "-servicio"
+								},
+								{
+									"key": "v",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 27 May 2025 03:15:57 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.12.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1243"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"version\": \"1\",\n    \"data\": {\n        \"count\": 5,\n        \"next\": null,\n        \"previous\": null,\n        \"results\": [\n            {\n                \"uuid\": \"528773a0-6bc9-4226-afb0-6dcc1d33ac86\",\n                \"username\": \"CaviedesJoaquin\",\n                \"tipo\": \"trabajador\",\n                \"domicilio\": \"Av. Sal Gema 1635, Argentina\",\n                \"lat\": -28.4946078,\n                \"lon\": -65.8066178,\n                \"email\": \"joaquincaviedes@gmail.com\",\n                \"servicio\": \"Jardinero\",\n                \"telefono\": \"3834238214\"\n            },\n            {\n                \"uuid\": \"4f3c90a6-1205-4ae0-be50-02ceb01aef29\",\n                \"username\": \"JorgeRojas\",\n                \"tipo\": \"trabajador\",\n                \"domicilio\": \"Av. Belgrano, Argentina\",\n                \"lat\": -34.6904453,\n                \"lon\": -58.3394109,\n                \"email\": \"jorgerojas@gmail.com\",\n                \"servicio\": \"Plomero\",\n                \"telefono\": \"3834624851\"\n            },\n            {\n                \"uuid\": \"21d360b0-3dbb-402d-939b-e5044fb64e2b\",\n                \"username\": \"EugeQuevedo\",\n                \"tipo\": \"cliente\",\n                \"domicilio\": \"Av. Galindez, Catamarca, Argentina\",\n                \"lat\": -28.4668715,\n                \"lon\": -65.797505,\n                \"email\": \"eugequevedo@gmail.com\",\n                \"servicio\": null,\n                \"telefono\": \"3834624852\"\n            },\n            {\n                \"uuid\": \"b1925b52-3731-4fab-a7fa-b8db5831c1c8\",\n                \"username\": \"EspinozaGuillermo\",\n                \"tipo\": \"cliente\",\n                \"domicilio\": \"Av. Ramon R. Lopez, Argentina\",\n                \"lat\": -37.55239,\n                \"lon\": -59.6266,\n                \"email\": \"espinozaguillermo@gmail.com\",\n                \"servicio\": null,\n                \"telefono\": \"3834627731\"\n            },\n            {\n                \"uuid\": \"ea8b050a-6767-4888-a989-478491d8579d\",\n                \"username\": \"admin\",\n                \"tipo\": \"\",\n                \"domicilio\": \"\",\n                \"lat\": null,\n                \"lon\": null,\n                \"email\": \"woney123@gmail.com\",\n                \"servicio\": null,\n                \"telefono\": \"\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		}
+	]
+}

@@ -8,6 +8,7 @@ from apps.usuarios.permissions import EsCliente, EsAdmin
 from .filters import SolicitudesFilter
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, OR
 from .permissions import EsClienteYDueñoSolicitud, EsTrabajadorAsignado, EsAdministrador
+from django.utils import timezone
 
 class SolicitudViewSet(viewsets.ModelViewSet):
     serializer_class = SolicitudSerializer
@@ -36,9 +37,43 @@ class SolicitudViewSet(viewsets.ModelViewSet):
             return [IsAuthenticated(), OR(EsCliente(), EsAdmin())]  # Solo clientes pueden crear
         elif self.action in ['update', 'partial_update', 'destroy']:
             return [IsAuthenticated(), OR(OR(EsClienteYDueñoSolicitud(), EsTrabajadorAsignado()), EsAdministrador())]
-        elif self.action in ['aceptar', 'rechazar']:
+        elif self.action in ['aceptar', 'rechazar', 'finalizar']:
             return [IsAuthenticated(), EsTrabajadorAsignado()]
         return super().get_permissions()
+    
+    @action(detail=True, methods=['post'])
+    def aceptar(self, request, uuid=None):
+        solicitud = self.get_object()
+        if solicitud.estado != 'pendiente':
+            return Response({"error": "Solo se pueden aceptar solicitudes pendientes."}, status=400)
+        solicitud.estado = 'aceptada'
+        solicitud.fecha_confirmacion = timezone.now()
+        solicitud.fecha_rechazo = None
+        solicitud.save()
+        return Response({"mensaje": "Solicitud aceptada correctamente."}, status=200)
+
+    @action(detail=True, methods=['post'])
+    def rechazar(self, request, uuid=None):
+        solicitud = self.get_object()
+        if solicitud.estado != 'pendiente':
+            return Response({"error": "Solo se pueden rechazar solicitudes pendientes."}, status=400)
+        solicitud.estado = 'rechazada'
+        solicitud.fecha_rechazo = timezone.now()
+        solicitud.fecha_confirmacion = None
+        solicitud.fecha_finalizo = None
+        solicitud.save()
+        return Response({"mensaje": "Solicitud rechazada correctamente."}, status=200)
+    
+    @action(detail=True, methods=['post'])
+    def finalizar(self, request, uuid=None):
+        solicitud = self.get_object()
+        if solicitud.estado != 'aceptada':
+            return Response({"error": "Solo se pueden finalizar solicitudes aceptadas."}, status=400)
+        solicitud.estado = 'finalizada'
+        solicitud.fecha_finalizo = timezone.now()
+        solicitud.fecha_rechazo = None
+        solicitud.save()
+        return Response({"mensaje": "Solicitud finalizada correctamente."}, status=200)
         
     def list(self, request, *args, **kwargs):
         if request.version == '1':
@@ -59,3 +94,5 @@ class SolicitudViewSet(viewsets.ModelViewSet):
             }
             return response
         return super().list(request, *args, **kwargs)
+    
+

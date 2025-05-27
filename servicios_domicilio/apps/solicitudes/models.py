@@ -8,7 +8,8 @@ class Solicitudes(models.Model):
     uuid = models.UUIDField(default=uuid4, editable=False, unique=True)
     ESTADO = [
         ('pendiente', 'Pendiente'),
-        ('confirmada', 'Confirmada'),
+        ('aceptada', 'Aceptada'),
+        ('rechazada', 'Rechazada'),
         ('finalizada', 'Finalizada')
     ]
     cliente = models.ForeignKey(
@@ -33,6 +34,9 @@ class Solicitudes(models.Model):
     lon = models.FloatField(null=True, blank=True)
     fecha_creacion = models.DateField(auto_now_add=True)
     fecha_solicitada = models.DateField(default=timezone.now)
+    fecha_confirmacion = models.DateTimeField(null=True, blank=True)
+    fecha_rechazo = models.DateTimeField(null=True, blank=True)
+    fecha_finalizo = models.DateTimeField(null=True, blank=True)
     estado = models.CharField(max_length=20, choices=ESTADO, default='pendiente')
 
     descripcion = models.TextField(max_length=1000, blank=True)
