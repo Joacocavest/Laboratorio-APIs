@@ -30,10 +30,12 @@ class SolicitudSerializer(serializers.ModelSerializer):
             'trabajador', 
             'servicio',
             'direccion', 
+            'lat',
+            'lon',
             'estado', 
             'fecha_creacion', 
             'fecha_solicitada',
-            'descripcion', 
+            'descripcion',
             'fecha_confirmacion', 
             'fecha_rechazo',
             'fecha_finalizo'
@@ -43,14 +45,13 @@ class SolicitudSerializer(serializers.ModelSerializer):
             'fecha_creacion', 
             'cliente', 
             'trabajador',
-            'servicio', 
-            'descripcion', 
+            'servicio',
             'fecha_confirmacion', 
             'fecha_rechazo',
             'fecha_finalizo',
             'estado'
         ]
-    
+
     def validate_fecha_solicitada(self, value):
         if value < timezone.now().date():
             raise serializers.ValidationError("La fecha de solicitud debe ser posterior a hoy.")

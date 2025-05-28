@@ -1,6 +1,9 @@
 from pathlib import Path
 from datetime import timedelta
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -157,8 +160,16 @@ REST_FRAMEWORK = {
     ],
 }
 
-GOOGLE_MAPS_API_KEY = 'AIzaSyA5OwfzfHSIPLMn20rbGO8q_xiIzJNQu9I'
-OPENCAGE_API_KEY = '813147f0145a4a6cbbbf351a19b34035'
+
+
+GOOGLE_MAPS_API_KEY = os.getenv('GOOGLE_MAPS_API_KEY')
+OPENCAGE_API_KEY = os.getenv('OPENCAGE_API_KEY')
+
+
+# GOOGLE_MAPS_API_KEY = 'AIzaSyA5OwfzfHSIPLMn20rbGO8q_xiIzJNQu9I'
+# OPENCAGE_API_KEY = '813147f0145a4a6cbbbf351a19b34035'
+
+
 
 
 
