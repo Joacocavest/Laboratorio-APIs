@@ -5,7 +5,7 @@
 # ENV/
 
 # Archivos de configuración sensibles
-*.env
+# *.env
 *.secret
 *.local
 
