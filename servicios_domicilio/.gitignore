@@ -1,8 +1,8 @@
 # Entorno virtual
-venv/
-.env/
-.venv/
-ENV/
+# venv/
+# .env/
+# .venv/
+# ENV/
 
 # Archivos de configuración sensibles
 *.env
