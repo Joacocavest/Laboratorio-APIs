@@ -1,7 +1,6 @@
 from django import forms
-from apps.solicitudes.models import Solicitudes
+from apps.solicitudes.models import Solicitudes, Servicio
 from apps.usuarios.models import Usuario
-from apps.servicios.models import Servicio
 from django.core.exceptions import ValidationError
 
 class SolicitudesAdminForm(forms.ModelForm):

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from apps.usuarios.models import Usuario
-from apps.servicios.models import Servicio
+from apps.solicitudes.models import Servicio
 from servicios_domicilio.core.utils import obtener_coordenadas
 
 class UsuarioSerializer(serializers.ModelSerializer):

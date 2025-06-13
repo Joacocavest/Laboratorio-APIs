@@ -1,15 +1,46 @@
 from rest_framework import viewsets, permissions, status, filters
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from apps.solicitudes.models import Solicitudes
-from apps.solicitudes.serializers import SolicitudSerializer
+from apps.solicitudes.models import Solicitudes, Servicio
+from apps.solicitudes.serializers import SolicitudSerializer, ServicioSerializer
 from django_filters.rest_framework import DjangoFilterBackend
 from apps.usuarios.permissions import EsCliente, EsAdmin
 from .filters import SolicitudesFilter
 from rest_framework.permissions import IsAuthenticated, IsAdminUser, OR
 from .permissions import EsClienteYDueñoSolicitud, EsTrabajadorAsignado, EsAdministrador
 from django.utils import timezone
+from rest_framework import viewsets, permissions
 
+class ServicioViewSet(viewsets.ModelViewSet):
+    queryset = Servicio.objects.all()
+    serializer_class = ServicioSerializer
+
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [permissions.IsAuthenticated()]  # todos los logueados pueden ver
+        else:
+            return [permissions.IsAdminUser()]  # solo admins pueden modificar
+
+    def list(self, request, *args, **kwargs):
+        if request.version == '1':
+            # lógica para versión 1 (podés cambiar serializer o datos)
+            response = super().list(request, *args, **kwargs)
+            response.data = {
+                "version": "1",
+                "data": response.data
+            }
+            return response
+        elif request.version == '2':
+            # lógica para versión 2 (puede incluir más info o estructura distinta)
+            response = super().list(request, *args, **kwargs)
+            response.data = {
+                "version": "2",
+                "info": "Vista extendida",
+                "data": response.data
+            }
+            return response
+        return super().list(request, *args, **kwargs)
+    
 class SolicitudViewSet(viewsets.ModelViewSet):
     serializer_class = SolicitudSerializer
     filter_backends= [DjangoFilterBackend, filters.OrderingFilter]

@@ -3,6 +3,13 @@ from django.utils import timezone
 from django.db import models
 from django.conf import settings
 
+class Servicio(models.Model):
+    nombre = models.CharField(max_length=100, unique=True)
+    descripcion = models.TextField(blank=True)
+    activo = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.nombre
 # Create your models here.
 class Solicitudes(models.Model):
     uuid = models.UUIDField(default=uuid4, editable=False, unique=True)
@@ -23,7 +30,7 @@ class Solicitudes(models.Model):
         on_delete=models.CASCADE 
     )
     servicio = models.ForeignKey(
-        'servicios.Servicio', 
+        'solicitudes.Servicio', 
         on_delete=models.CASCADE
     )
     direccion = models.CharField(
