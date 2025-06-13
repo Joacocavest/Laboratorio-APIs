@@ -1,6 +1,6 @@
 from rest_framework import routers 
 from apps.usuarios.api import UsuarioViewSet
-from apps.servicios.api import ServicioViewSet
+from apps.solicitudes.api import ServicioViewSet
 from apps.solicitudes.api import SolicitudViewSet
 
 # Initializarel router de DRF solo una vez

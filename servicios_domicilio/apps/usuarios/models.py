@@ -17,19 +17,18 @@ class Usuario(AbstractUser):
     lon = models.FloatField(null=True, blank=True)
     email = models.EmailField(max_length=100)
     telefono = models.CharField(max_length=10, blank=True)
-    servicio = models.ForeignKey(
-        'servicios.Servicio',
-        null=True,
-        blank=True,
-        on_delete=models.CASCADE
+    servicio = models.ManyToManyField(
+        'solicitudes.Servicio',
+        blank = True,
+        related_name = 'trabajadores'
     )
 
     def clean(self):
         # Si es trabajador, servicio es obligatorio
-        if self.tipo == 'trabajador' and not self.servicio:
+        if self.tipo == 'trabajador' and not self.servicio.exists():
             raise ValidationError("Un trabajador debe tener un servicio asignado.")
         # Si es cliente, servicio debe ser None
-        if self.tipo == 'cliente' and self.servicio:
+        if self.tipo == 'cliente' and self.servicio.exists():
             raise ValidationError("Un cliente no debe tener un servicio asignado.")
 
     def __str__(self):

@@ -1,10 +1,22 @@
 from django.utils import timezone
 from rest_framework import serializers
-from apps.solicitudes.models import Solicitudes
-from apps.servicios.models import Servicio
+from apps.solicitudes.models import Solicitudes, Servicio
 from apps.usuarios.models import Usuario
 from servicios_domicilio.core.utils import obtener_coordenadas
 
+class ServicioSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Servicio
+        fields = [
+            'id',
+            'nombre',
+            'descripcion',
+            'activo'
+        ]
+
+        read_only_fields = [
+            'id'
+        ]
 
 class SolicitudSerializer(serializers.ModelSerializer):
     cliente = serializers.SlugRelatedField(
@@ -58,11 +70,20 @@ class SolicitudSerializer(serializers.ModelSerializer):
         return value
     
     def validate(self, data):
-        if self.instance is None:
-            if data['trabajador'].tipo != 'trabajador':
-                raise serializers.ValidationError("El usuario seleccionado no es un trabajador.")
-            if data['cliente'].tipo != 'cliente':
-                raise serializers.ValidationError("El usuario seleccionado no es un cliente.")
+        trabajador = data.get('trabajador')
+        cliente = data.get('cliente')
+        servicio = data.get('servicio')
+
+        if not trabajador or not cliente or not servicio:
+            return data
+
+        if trabajador.tipo != 'trabajador':
+            raise serializers.ValidationError("El usuario seleccionado no es un trabajador.")
+        if cliente.tipo != 'cliente':
+            raise serializers.ValidationError("El usuario seleccionado no es un cliente.")
+        if servicio not in trabajador.servicios.all():
+            raise serializers.ValidationError("El trabajador no ofrece el servicio seleccionado.")
+
         return data
     
     def update(self, instance, validated_data):
