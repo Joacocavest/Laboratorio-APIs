@@ -59,8 +59,7 @@ class SolicitudViewSet(viewsets.ModelViewSet):
         return Solicitudes.objects.none()
 
     def perform_create(self, serializer):
-        
-        serializer.save(cliente=self.request.user, trabajador=self.request.user, servicio=self.request.user) #en servicio no es. user, 
+        serializer.save(cliente=self.request.user)
 
     def get_permissions(self):
         if self.action in ['list', 'retrieve']:

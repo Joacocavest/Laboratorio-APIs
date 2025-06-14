@@ -64,8 +64,6 @@ class SolicitudSerializer(serializers.ModelSerializer):
             'id', 
             'fecha_creacion', 
             'cliente', 
-            'trabajador',
-            'servicio',
             'fecha_confirmacion', 
             'fecha_rechazo',
             'fecha_finalizo',
