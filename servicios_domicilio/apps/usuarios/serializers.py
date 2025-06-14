@@ -9,8 +9,10 @@ class UsuarioSerializer(serializers.ModelSerializer):
         slug_field='nombre',
         queryset=Servicio.objects.all(),
         allow_null=True,
-        required=False
+        required=False,
+        many=True
     )
+
     class Meta: 
         model= Usuario
         fields= [
@@ -41,6 +43,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         password = validated_data.pop('password')
+        servicios = validated_data.pop('servicio', [])  # ahora es una lista
         domicilio = validated_data.get('domicilio')
         coords = obtener_coordenadas(domicilio)
         if coords:
@@ -50,4 +53,8 @@ class UsuarioSerializer(serializers.ModelSerializer):
         user = Usuario(**validated_data)
         user.set_password(password)
         user.save()
+
+        if servicios:
+            user.servicio.set(servicios)
+
         return user
