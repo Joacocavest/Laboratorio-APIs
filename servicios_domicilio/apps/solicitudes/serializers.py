@@ -19,25 +19,33 @@ class ServicioSerializer(serializers.ModelSerializer):
         ]
 
 class SolicitudSerializer(serializers.ModelSerializer):
-    cliente = serializers.SlugRelatedField(
-        slug_field = 'username',
-        queryset=Usuario.objects.filter(tipo='cliente')
-    )
-    trabajador = serializers.SlugRelatedField(
-        slug_field='username',
-        queryset=Usuario.objects.filter(tipo='trabajador')
-    )
-    servicio = serializers.SlugRelatedField(
-        slug_field='nombre',
-        queryset=Servicio.objects.all(),
-        allow_null=True,
-        required=False
-    )
+    # cliente = serializers.SlugRelatedField(
+    #     slug_field = 'username',
+    #     queryset=Usuario.objects.filter(tipo='cliente')
+    # )
+    # trabajador = serializers.SlugRelatedField(
+    #     slug_field='username',
+    #     queryset=Usuario.objects.filter(tipo='trabajador')
+    # )
+    # servicio = serializers.SlugRelatedField(
+    #     slug_field='nombre',
+    #     queryset=Servicio.objects.all(),
+    #     allow_null=True,
+    #     required=False
+    # )
 
+#----------------------------------------------------------------------------------------------------------------------------
+#     Solución: Elegí una de dos cosas:
+# Si el cliente siempre será el usuario autenticado, marcá cliente = serializers.HiddenField(default=serializers.CurrentUserDefault()) y dejalo en read_only_fields.
+# Si lo querés editable por nombre, sacalo de read_only_fields.
+
+# Lo mismo aplica para trabajador y servicio.
+#--------------------------------------------------------------------------------------------------------------------------------    
     class Meta:
         model = Solicitudes
         fields = [
-            'uuid', 
+            'id',
+            'uuid',
             'cliente', 
             'trabajador', 
             'servicio',
@@ -81,9 +89,8 @@ class SolicitudSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("El usuario seleccionado no es un trabajador.")
         if cliente.tipo != 'cliente':
             raise serializers.ValidationError("El usuario seleccionado no es un cliente.")
-        if servicio not in trabajador.servicios.all():
+        if servicio not in trabajador.servicio.all():
             raise serializers.ValidationError("El trabajador no ofrece el servicio seleccionado.")
-
         return data
     
     def update(self, instance, validated_data):

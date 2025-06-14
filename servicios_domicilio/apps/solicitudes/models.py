@@ -10,6 +10,7 @@ class Servicio(models.Model):
 
     def __str__(self):
         return self.nombre
+    
 # Create your models here.
 class Solicitudes(models.Model):
     uuid = models.UUIDField(default=uuid4, editable=False, unique=True)
