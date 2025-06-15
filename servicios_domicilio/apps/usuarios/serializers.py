@@ -35,9 +35,13 @@ class UsuarioSerializer(serializers.ModelSerializer):
         servicio = attrs.get('servicio')
 
         if tipo == 'trabajador' and not servicio:
-            raise serializers.ValidationError("Un trabajador debe tener un servicio.")
+            raise serializers.ValidationError({
+                "servicio": "Un trabajador debe tener un servicio."})
         if tipo == 'cliente' and servicio:
-            raise serializers.ValidationError("Un cliente no debe tener un servicio asignado.")
+            raise serializers.ValidationError({
+                "servicio": "Un cliente no debe tener un servicio asignado."
+            })
+
     
         return attrs
     
