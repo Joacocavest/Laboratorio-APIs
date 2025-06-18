@@ -4,6 +4,20 @@ from apps.solicitudes.models import Solicitudes
 from rest_framework.test import APIClient
 from rest_framework import status
 
+"""
+Test de API REST para la aplicación de servicios a domicilio.
+
+Este módulo contiene pruebas automáticas para:
+- Comprobar las reglas de negocio (validaciones en usuarios y solicitudes)
+- Verificar permisos y autenticación por tipo de usuario
+- Simular respuestas de servicios externos (OpenCage API)
+- Confirmar integridad de relaciones entre modelos
+
+Frameworks:
+- pytest
+- pytest-django
+- Django REST Framework
+"""
 
 
 #----------------------------------------------------------------------------------------------------------------------------------
