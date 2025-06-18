@@ -2,6 +2,22 @@ import pytest
 from datetime import date, timedelta
 from apps.solicitudes.models import Solicitudes
 
+"""
+Test de API REST para la aplicación de servicios a domicilio.
+
+Este módulo contiene pruebas automáticas para:
+- Validar operaciones CRUD sobre solicitudes
+- Comprobar las reglas de negocio (validaciones en usuarios y solicitudes)
+- Verificar permisos y autenticación por tipo de usuario
+- Confirmar integridad de relaciones entre modelos
+
+Frameworks:
+- pytest
+- pytest-django
+- Django REST Framework
+"""
+
+
 @pytest.mark.django_db
 def test_creacion_exitosa_solicitud(get_authenticated_client, trabajador, servicio):
     client = get_authenticated_client

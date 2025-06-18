@@ -40,7 +40,8 @@ def trabajador(db):
         username="trabajador_test",
         email="trabajador@example.com",
         password="testpass123",
-        tipo="trabajador"
+        tipo="trabajador",
+        domicilio="calle trabajador"
     )
 
 @pytest.fixture

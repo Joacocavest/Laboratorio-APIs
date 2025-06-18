@@ -42,20 +42,23 @@ class ServicioViewSet(viewsets.ModelViewSet):
         return super().list(request, *args, **kwargs)
     
 class SolicitudViewSet(viewsets.ModelViewSet):
+    
     serializer_class = SolicitudSerializer
     filter_backends= [DjangoFilterBackend, filters.OrderingFilter]
     filterset_class = SolicitudesFilter
     ordering_fields= ['fecha_creacion', 'fecha_solicitada']
     lookup_field = 'uuid'
+    
+    
 
     def get_queryset(self):
         user = self.request.user
         if user.is_staff:
-            return Solicitudes.objects.all()
+            return Solicitudes.objects.all().order_by('-fecha_creacion')
         elif user.tipo == 'cliente':
-            return Solicitudes.objects.filter(cliente=user)
+            return Solicitudes.objects.filter(cliente=user).order_by('-fecha_creacion')
         elif user.tipo == 'trabajador':
-            return Solicitudes.objects.filter(trabajador=user)
+            return Solicitudes.objects.filter(trabajador=user).order_by('-fecha_creacion')
         return Solicitudes.objects.none()
 
     def perform_create(self, serializer):
@@ -125,5 +128,3 @@ class SolicitudViewSet(viewsets.ModelViewSet):
             }
             return response
         return super().list(request, *args, **kwargs)
-    
-
