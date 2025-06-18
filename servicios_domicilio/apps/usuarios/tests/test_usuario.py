@@ -25,18 +25,22 @@ Frameworks:
 #------------------------------------------------------------------------------------------------------------------------------
 #       Comprobacion de las validaciones_tests
 
+
 @pytest.mark.django_db
 def test_no_puede_crearse_trabajador_sin_servicio(api_client):
-    #Test validacion: Trabajador sin servicio asignado
-    #Crear un superusuario para autenticar y crear usuarios
+    # Crea un superusuario administrador que puede crear otros usuarios
     admin = Usuario.objects.create_superuser(
         username="admin", email="admin@example.com", password="admin123", tipo="admin"
     )
 
+    # Genera un token JWT de autenticación para ese admin
     refresh = RefreshToken.for_user(admin)
     token = str(refresh.access_token)
+
+    # Asigna ese token a las cabeceras del cliente de test (para simular usuario autenticado)
     api_client.credentials(HTTP_AUTHORIZATION=f'Bearer {token}')
 
+    # Prepara los datos del nuevo trabajador, pero sin asignarle servicios (lo cual no está permitido)
     payload = {
         "username": "trabajador_sin_servicio",
         "email": "trabajador@example.com",
@@ -44,16 +48,17 @@ def test_no_puede_crearse_trabajador_sin_servicio(api_client):
         "tipo": "trabajador",
         "domicilio": "Don Lopez",
         "telefono": "3834568923"
-        # Sin campo 'servicio'
+        # No incluye 'servicio'
     }
 
+    # Envía un POST a la API para intentar crear el trabajador con los datos anteriores
     response = api_client.post("/view-set/usuarios/", data=payload, format="json")
-
-    print(response.data)
+    # Espera que la API responda con un error 400 (Bad Request)
     assert response.status_code == 400
+    # Verifica que el campo "servicio" esté en los errores de respuesta
     assert "servicio" in response.data
+    # Verifica que el mensaje de error devuelto sea el esperado
     assert str(response.data["servicio"][0]) == "Un trabajador debe tener un servicio."
-    
     
 @pytest.mark.django_db
 def test_validacion_cliente_con_servicio(api_client, servicio):
@@ -84,9 +89,6 @@ def test_validacion_cliente_con_servicio(api_client, servicio):
     assert response.status_code == 400
     assert "servicio" in response.data
     assert str(response.data["servicio"][0]) == "Un cliente no debe tener un servicio asignado."
-    
-    
-    
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 #       Endpoints protegidos
 
@@ -130,7 +132,3 @@ def test_trabajador_no_puede_crear_solicitud(trabajador, servicio, get_authentic
 
     response = get_authenticated_worker.post("/view-set/solicitudes/", data=payload, format="json")
     assert response.status_code == 403  #trabajador, no es cliente ni admin
-
-    
-
-    
