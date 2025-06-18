@@ -1,143 +1,159 @@
+# Tests Automatizados - API Servicios a Domicilio
 
-# Servicios a Domicilio - API REST
-
-Sistema de gestión para la contratación de servicios a domicilio, que conecta a clientes con trabajadores autónomos (plomeros, electricistas, pintores, etc.) mediante una API desarrollada en Django REST Framework.
-
----
-
-## Dominio del Sistema
-
-El sistema se enmarca dentro del dominio de la **contratación de servicios a domicilio**, permitiendo la interacción entre **trabajadores autónomos** y **clientes particulares** que requieren dichos servicios. Inicialmente, se enfoca en servicios técnicos y manuales comunes (plomería, gas, electricidad, pintura, etc.), pero está pensado para escalar a otros rubros (salud, veterinaria, etc.).
+Este proyecto cuenta con una suite de **tests automatizados** utilizando `pytest` y `pytest-django`, que garantizan la integridad de la lógica del sistema, las reglas de validación, los permisos de acceso y el funcionamiento general de los endpoints de la API REST desarrollada con Django REST Framework.
 
 ---
 
-##  Requisitos del Sistema
+## ¿Qué se testea?
 
-###  Requisitos Funcionales
+### Autenticación y permisos
+- Acceso restringido según el tipo de usuario (`cliente`, `trabajador`, `admin`).
+- Validación de token JWT y protección de endpoints.
+- Trabajadores no pueden crear solicitudes (solo clientes).
 
-#### Gestión de usuarios
-- Dos tipos de usuarios: **Cliente** y **Trabajador**.
-- Registro con formulario personalizado (nombre, domicilio, servicio, etc.).
-- Los trabajadores deben indicar el servicio que ofrecen.
-- Los clientes deben indicar su domicilio.
+### Usuarios
+- Creación de usuarios válidos por tipo (`cliente` o `trabajador`).
+- Restricciones de negocio:
+  - Un trabajador debe tener al menos un servicio.
+  - Un cliente **no puede** tener servicios asignados.
 
-#### Autenticación y autorización
-- Autenticación mediante **JSON Web Token (JWT)**.
-- Solo usuarios autenticados pueden acceder a operaciones sensibles.
-- Permisos basados en el tipo de usuario (`cliente`, `trabajador`, `admin`).
+### Solicitudes
+- Creación de solicitudes válidas.
+- Validación de fechas (no se aceptan solicitudes con fechas pasadas).
+- Acciones personalizadas:
+  - `aceptar`, `rechazar`, `finalizar` solicitud.
 
-#### Gestión de servicios
-- Modelo `Servicio`: plomería, gas, electricidad, etc.
-- Los administradores pueden crear, actualizar y eliminar servicios.
+### API externa - Geolocalización (OpenCage)
+- Mock de la API de OpenCage para evitar depender de llamadas reales.
+- Validación de la respuesta formateada (dirección, ciudad, país, coordenadas).
 
-#### Búsqueda de trabajadores
-- Filtros disponibles:
-  - Por nombre de usuario.
-  - Por tipo de servicio.
-
-#### Solicitudes de servicios
-- Un cliente puede enviar una solicitud a un trabajador, indicando:
-  - Fecha deseada (`fecha_solicitada`)
-  - Dirección y descripción del problema.
-- Un trabajador puede **aceptar** o **rechazar** una solicitud mediante endpoints personalizados.
-
-#### Historial de solicitudes
-- Los usuarios pueden visualizar sus solicitudes filtradas por estado:
-  - `pendiente`, `aceptada`, `rechazada`, `finalizada`.
-
-#### Consumo de API externa
-- Se utiliza la API **OpenCage** para geolocalización a partir de direcciones.
 
 ---
 
-## Modelos principales
-
-### Usuario (`Usuario`)
-Hereda de `AbstractUser` y se le agregan:
-- `tipo`: cliente o trabajador.
-- `domicilio`, `lat`, `lon`, `telefono`, `email`.
-- `servicio`: FK a `Servicio` (solo para trabajadores).
-
-### Servicio (`Servicio`)
-- `nombre`: nombre del servicio (único).
-- `descripcion`: texto libre.
-- `activo`: booleano para activar o desactivar el servicio.
-
-### Solicitudes (`Solicitudes`)
-- `cliente`: FK a Usuario (tipo = cliente).
-- `trabajador`: FK a Usuario (tipo = trabajador).
-- `servicio`: FK a Servicio.
-- `estado`: `pendiente`, `aceptada`, `rechazada`, `finalizada`.
-- Campos automáticos: `fecha_creacion`, `fecha_confirmacion`, `fecha_rechazo`, `fecha_finalizo`.
-- Campos de ubicación: `direccion`, `lat`, `lon`.
-- Campo libre: `descripcion`.
-
----
-
-## Permisos Personalizados
-
-- `EsCliente`
-- `EsTrabajadorAsignado`
-- `EsClienteYDueñoSolicitud`
-- `EsAdministrador`
-
----
-
-## Endpoints Extra
-
-### Aceptar solicitud (trabajador)
-```http
-POST /api/solicitudes/<uuid>/aceptar/
-Authorization: Bearer <token>
-```
-
-### Rechazar solicitud (trabajador)
-```http
-POST /api/solicitudes/<uuid>/rechazar/
-Authorization: Bearer <token>
-```
-
-### Finalizar solicitud (trabajador)
-```http
-POST /api/solicitudes/<uuid>/finalizar/
-Authorization: Bearer <token>
-```
-
----
-
-## Tecnologías
-
-- **Backend:** Django 4+, Django REST Framework
-- **Autenticación:** JWT (djangorestframework-simplejwt)
-- **Base de datos:** SQLite (para desarrollo)
-- **Geolocalización:** OpenCage API
-
----
-
-## Instalación y ejecución
+## Estructura de los tests
 
 ```bash
-git clone https://github.com/usuario/proyecto-servicios.git
-cd servicios_domicilio
-pip install -r requirements.txt
-python manage.py makemigrations
-python manage.py migrate
-python manage.py runserver
+apps/
+├── usuarios/
+│   └── tests/
+│       ├── test_usuario.py            # Validaciones de creación de usuarios y permisos
+│       └── conftest.py                # Fixtures compartidos para usuarios
+│
+├── solicitudes/
+│   └── tests/
+│       ├── test_solicitud.py         # CRUD y filtros de solicitudes
+│       ├── test_validaciones.py      # Reglas de negocio específicas (fechas, roles, etc.)
 ```
 
-SuperUser creado --> username: admin ; password: woney123#
+---
+
+## Cómo ejecutar los tests
+
+```bash
+# Recomendado: entorno virtual activo
+test@pc:~$ pytest
+```
+
+Si querés ver el resumen extendido y controlar qué se ejecuta:
+
+```bash
+pytest -v --tb=short --strict-markers
+```
 
 ---
 
-## Documentación
+## Configuración de Pytest (pytest.ini)
 
-- Todos los endpoints fueron documentados en la carpeta Postman.
-- Archivo `.json` incluido en el repositorio para importar la colección.
+Archivo `pytest.ini` incluido en el proyecto:
+
+```ini
+[pytest]
+DJANGO_SETTINGS_MODULE = servicios_domicilio.settings_testing
+addopts = 
+    --create-db
+    --tb=short
+    --strict-markers
+    -v
+
+testpaths = apps
+python_files = test_*.py *_tests.py
+default_markers =
+    unit: Pruebas unitarias
+    integration: Pruebas de integración
+    api: Pruebas de API REST
+```
 
 ---
 
-## Autor
+## Ejemplos de tests
 
-Proyecto desarrollado por Espinoza Guillermo y Caviedes Estrada Joaquin para la materia **APIs**.
+```python
+@pytest.mark.django_db
+def test_cliente_autenticado_puede_crear_solicitud(get_authenticated_client, trabajador, servicio):
+    """Verifica que un cliente autenticado pueda crear una solicitud válida."""
+    payload = {
+        "trabajador": trabajador.id,
+        "servicio": servicio.id,
+        "direccion": "Calle falsa 123",
+        "fecha_solicitada": str(date.today() + timedelta(days=1)),
+        "descripcion": "Solicitud válida"
+    }
+    response = get_authenticated_client.post("/view-set/solicitudes/", data=payload, format="json")
+    assert response.status_code == 201
+```
+
+```python
+@pytest.mark.django_db
+def test_buscar_direccion_opencage_ok(mocker, api_client):
+    """Simula una búsqueda de dirección utilizando un mock de OpenCage API."""
+    mock_get = mocker.patch("requests.get")
+    mock_get.return_value.status_code = 200
+    mock_get.return_value.json.return_value = {
+        "results": [{
+            "formatted": "Av. Sal Gema 1635, Argentina",
+            "geometry": {"lat": -28.49, "lng": -65.80},
+            "components": {
+                "country": "Argentina",
+                "city": "San Fernando del Valle de Catamarca",
+                "postcode": "4700"
+            }
+        }],
+        "status": {"code": 200, "message": "OK"}
+    }
+
+    response = api_client.get("/api/direccion/buscar/", {"input": "Av. Sal Gema 1635"})
+    assert response.status_code == 200
+    assert response.data[0]["ciudad"] == "San Fernando del Valle de Catamarca"
+```
 
 ---
+
+## Buenas prácticas incluidas
+
+- Uso de `fixtures` reutilizables para crear usuarios y servicios.
+- Separación clara entre tests de validación, lógica de negocio y endpoints protegidos.
+- Tests atómicos, claros y bien documentados con `docstring`.
+- Simulación de API externa con `pytest-mock` para evitar dependencia de red.
+
+---
+
+## Contribución
+
+Para agregar nuevos tests:
+- Usá los fixtures definidos en `conftest.py`
+- Seguí el formato `test_<nombre>.py`
+- Marcá con `@pytest.mark.django_db` si accedés a la base de datos
+
+---
+
+## Autoría de los tests
+
+Desarrollado por:  
+**Joaquín Caviedes Estrada** – Ingeniería en Informática  
+**Guillermo Espinoza** - Ingeniería en Informática
+Facultad de Tecnología y Ciencias Aplicadas – UNCa
+
+---
+
+¡La cobertura de tests es tu red de seguridad!
+Usá `pytest` para asegurarte de que tu lógica de negocio resista los cambios sin romperse.
