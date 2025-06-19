@@ -63,6 +63,34 @@ def get_authenticated_client(cliente, api_client):
     return api_client
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # def create_user(username, documento_identidad = '44582654', first_name='Micaela', last_name='Salgado', password='unpassword', email=None):
 
 #     email = f'{username}@root.com' if email is None else email

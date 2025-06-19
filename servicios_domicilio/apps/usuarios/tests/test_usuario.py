@@ -3,7 +3,7 @@ from datetime import date, timedelta
 from apps.usuarios.models import Usuario
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.exceptions import ErrorDetail
-from apps.solicitudes.models import Servicio
+from apps.solicitudes.models import Servicio, Solicitudes
 from rest_framework import status
 
 """
@@ -117,7 +117,6 @@ def test_listado_solicitudes_requiere_autenticacion(api_client):
 
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
     
-    
 
 @pytest.mark.django_db
 def test_trabajador_no_puede_crear_solicitud(trabajador, servicio, get_authenticated_worker):
@@ -132,3 +131,39 @@ def test_trabajador_no_puede_crear_solicitud(trabajador, servicio, get_authentic
 
     response = get_authenticated_worker.post("/view-set/solicitudes/", data=payload, format="json")
     assert response.status_code == 403  #trabajador, no es cliente ni admin
+
+
+#---------------------------------------------------------------------------------
+#                        Verificamos acción de aceptar para trabajador
+#---------------------------------------------------------------------------------
+
+@pytest.mark.django_db
+def test_trabajador_puede_aceptar_solicitud(cliente, trabajador, servicio, get_authenticated_worker):
+    
+    worker = get_authenticated_worker
+    # 1. Creamos una solicitud pendiente asociada a cliente y trabajador
+    solicitud = Solicitudes.objects.create(
+        cliente=cliente,
+        trabajador=trabajador,
+        servicio=servicio,
+        direccion="Av. Siempre Viva 742",
+        fecha_solicitada=date.today() + timedelta(days=1),
+        descripcion="Necesito arreglos eléctricos",
+        estado="pendiente"
+    )
+
+    # 2. Enviar POST al endpoint personalizado 'aceptar'
+    url = f"/view-set/solicitudes/{solicitud.uuid}/aceptar/"
+    response = worker.post(url)
+
+    # 3. Verificar que se devuelve status 200 y mensaje de éxito
+    assert response.status_code == 200
+    assert response.data["mensaje"] == "Solicitud aceptada correctamente."
+
+    # 4. Refrescar la instancia de la solicitud desde la base de datos
+    solicitud.refresh_from_db()
+
+    # 5. Verificar que el estado haya cambiado correctamente
+    assert solicitud.estado == "aceptada"
+    assert solicitud.fecha_confirmacion is not None
+    assert solicitud.fecha_rechazo is None
