@@ -56,8 +56,6 @@ def test_lectura_lista_solicitudes(get_authenticated_client, solicitud):
     response = client.get("/view-set/solicitudes/")
 
     assert response.status_code == 200
-    print(len(response.data["data"]))
-    print(response.data["data"])
     assert len(response.data["data"]) >= 1
     assert str(item["uuid"] == str(solicitud.uuid) for item in response.data["data"])
 

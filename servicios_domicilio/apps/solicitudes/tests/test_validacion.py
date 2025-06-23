@@ -39,7 +39,6 @@ def test_creacion_fallida_fecha_pasada(get_authenticated_client, trabajador, ser
 
     response = client.post("/view-set/solicitudes/", data=payload, format='json')
 
-    print(response.data)
     assert response.status_code == 400
     assert "fecha_solicitada" in response.data
     assert str(response.data["fecha_solicitada"][0]) == "La fecha de solicitud debe ser posterior a hoy."
@@ -83,9 +82,6 @@ def test_buscar_direccion_opencage_ok(mocker, api_client):
     # Hacemos una llamada al endpoint de nuestra API con una dirección de prueba
     response = client.get("/api/direccion/buscar/", {"input": "Av. Sal Gema 1635"})
 
-    # Visualizamos lo que devolvió la vista, por consola
-    print(f"Response Data: {response.data}")
-    print(f"Response Content: {response.content}")
 
     # ----------------------
     # VALIDACIONES (asserts)

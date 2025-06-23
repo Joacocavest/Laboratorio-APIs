@@ -93,7 +93,7 @@ def test_validacion_cliente_con_servicio(api_client, servicio):
 #       Endpoints protegidos
 
 @pytest.mark.django_db
-def test_cliente_autenticado_puede_crear_solicitud(get_authenticated_client, trabajador, servicio):
+def test_cliente_autenticado_puede_crear_solicitud(get_authenticated_client, trabajador, servicio, cliente):
 
     client = get_authenticated_client
 
@@ -106,7 +106,24 @@ def test_cliente_autenticado_puede_crear_solicitud(get_authenticated_client, tra
     }
 
     response = client.post("/view-set/solicitudes/", data=payload, format="json")
+    
     assert response.status_code == 201
+    data = response.data
+    # Verifica que los campos esperados están en la respuesta
+    assert "id" in data
+    assert data["direccion"] == payload["direccion"]
+    assert data["descripcion"] == payload["descripcion"]
+    assert data["trabajador"] == payload["trabajador"]
+    assert data["servicio"] == payload["servicio"]
+    assert data["estado"] == "pendiente"  # si el default es pendiente
+
+    # Verifica en la base de datos que se creó la solicitud
+    solicitud_creada = Solicitudes.objects.get(id=data["id"])
+    assert solicitud_creada.cliente == cliente
+    assert solicitud_creada.trabajador == trabajador
+    assert solicitud_creada.servicio == servicio
+    assert solicitud_creada.direccion == payload["direccion"]
+    assert solicitud_creada.estado == "pendiente"
 
 
 
@@ -116,6 +133,12 @@ def test_listado_solicitudes_requiere_autenticacion(api_client):
     response = client.get("/view-set/solicitudes/")
 
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
+    # Verificar estructura del error
+    assert "detail" in response.data
+    assert response.data["detail"] in [
+        "Authentication credentials were not provided.",
+        "No se proporcionaron credenciales de autenticación."
+    ]
     
 
 @pytest.mark.django_db
@@ -131,6 +154,11 @@ def test_trabajador_no_puede_crear_solicitud(trabajador, servicio, get_authentic
 
     response = get_authenticated_worker.post("/view-set/solicitudes/", data=payload, format="json")
     assert response.status_code == 403  #trabajador, no es cliente ni admin
+    assert "detail" in response.data
+    assert response.data["detail"] in [
+        "You do not have permission to perform this action.",
+        "No tiene permiso para realizar esta acción."
+    ]
 
 
 #---------------------------------------------------------------------------------
@@ -215,20 +243,20 @@ def test_trabajador_ve_solo_sus_solicitudes(api_client, cliente, servicio):
 
     # Llamamos al endpoint de solicitudes
     response = api_client.get("/view-set/solicitudes/")
-
-    # Validamos respuesta exitosa
     assert response.status_code == 200
-    resultados = response.data["results"]
 
-    # Validamos que solo haya una solicitud y sea la asignada a trabajador1
+    # NUEVO: adaptar acceso a la estructura anidada
+    data = response.data
+    resultados = data.get("data", data).get("results", [])  # soporte para ambas estructuras
+
     assert len(resultados) == 1
     assert resultados[0]["descripcion"] == "Solicitud para t1"
     
 @pytest.mark.django_db
 def test_cliente_ve_solo_trabajadores(api_client, cliente, trabajador):
-    # Creamos un segundo cliente (con la misma lógica del fixture `cliente`)
+    # Crear otro cliente
     Usuario.objects.create_user(
-        username="cliente_extra",
+        username="cliente2",
         email="cliente2@example.com",
         password="testpass123",
         tipo="cliente",
@@ -236,23 +264,49 @@ def test_cliente_ve_solo_trabajadores(api_client, cliente, trabajador):
         telefono="3811122233"
     )
 
-    # Autenticamos al cliente principal con JWT
+    # Crear otro trabajador
+    trabajador2 = Usuario.objects.create_user(
+        username="trabajador2",
+        email="t2@example.com",
+        password="test123",
+        tipo="trabajador",
+        domicilio="Calle 2"
+    )
+
+    #Autenticar cliente principal
     refresh = RefreshToken.for_user(cliente)
-    token = str(refresh.access_token)
-    api_client.credentials(HTTP_AUTHORIZATION=f'Bearer {token}')
+    api_client.credentials(HTTP_AUTHORIZATION=f'Bearer {str(refresh.access_token)}')
 
-    # El cliente accede al listado de usuarios
+    #Obtener lista de usuarios
     response = api_client.get("/view-set/usuarios/")
-
-    # Verificamos que la respuesta sea exitosa
     assert response.status_code == 200
+    
+    #Verificar estructura de respuesta
+    print("Respuesta usuarios:", response.data)  # Para diagnóstico
+    
+    #Adaptarse al envoltorio "data"
+    raw_data = response.data
+    if "data" in raw_data:
+        usuarios = raw_data["data"].get("results", [])
+    elif "results" in raw_data:
+        usuarios = raw_data["results"]
+    elif isinstance(raw_data, list):
+        usuarios = raw_data
+    else:
+        usuarios = []
 
-    # Obtenemos los datos del listado
-    data = response.data["data"]
-
-    # Verificamos que todos los elementos sean de tipo 'trabajador'
-    assert all(user["tipo"] == "trabajador" for user in data)
-
-    # Verificamos que el otro cliente creado no esté en la lista
-    usernames = [user["username"] for user in data]
-    assert "cliente_extra" not in usernames
+    
+    # Verificar que es una lista de diccionarios
+    assert isinstance(usuarios, list), "La respuesta debe ser una lista"
+    if usuarios:  #Solo verificar contenido si hay datos
+        assert isinstance(usuarios[0], dict), "Cada usuario debe ser un diccionario"
+    
+    # Verificar que solo hay trabajadores
+    for usuario in usuarios:
+        assert usuario["tipo"] == "trabajador", f"Usuario {usuario['username']} no es trabajador"
+    
+    #Verificar usuarios específicos
+    trabajadores_ids = [u["uuid"] for u in usuarios]
+    assert str(trabajador.uuid) in trabajadores_ids
+    assert str(trabajador2.uuid) in trabajadores_ids
+    assert "cliente2" not in [u["username"] for u in usuarios]
