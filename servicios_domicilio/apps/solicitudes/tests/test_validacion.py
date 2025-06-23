@@ -102,3 +102,4 @@ def test_buscar_direccion_opencage_ok(mocker, api_client):
     assert response.data[0]["pais"] == "Argentina"
     assert response.data[0]["ciudad"] == "San Fernando del Valle de Catamarca"
     assert response.data[0]["codigo_postal"] == "null"
+    

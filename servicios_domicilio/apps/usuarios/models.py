@@ -22,7 +22,8 @@ class Usuario(AbstractUser):
         blank = True,
         related_name = 'trabajadores'
     )
-
+    class Meta:
+        ordering = ['id']
     # def clean(self):
     #     if self.pk:  # solo valido si el objeto ya fue creado
     #         if self.tipo == 'trabajador' and not self.servicio.exists():

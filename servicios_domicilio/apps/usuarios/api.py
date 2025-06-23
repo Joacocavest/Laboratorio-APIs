@@ -11,7 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # CRUD de usuario
 class UsuarioViewSet(viewsets.ModelViewSet):
-    queryset = Usuario.objects.all()
+    queryset = Usuario.objects.all().order_by('id')
     serializer_class = UsuarioSerializer
     filter_backends= [DjangoFilterBackend, filters.OrderingFilter]
     filterset_class= UsuarioFilter

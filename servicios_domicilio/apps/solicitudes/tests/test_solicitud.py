@@ -49,18 +49,8 @@ def test_creacion_exitosa_solicitud(get_authenticated_client, trabajador, servic
 
 
 @pytest.mark.django_db
-def test_lectura_lista_solicitudes(get_authenticated_client, cliente, trabajador, servicio):
-    from apps.solicitudes.models import Solicitudes
-    from datetime import date, timedelta
-
-    solicitud = Solicitudes.objects.create(
-        cliente=cliente,
-        trabajador=trabajador,
-        servicio=servicio,
-        direccion="Prueba",
-        fecha_solicitada=date.today() + timedelta(days=2),
-        descripcion="desc"
-    )
+def test_lectura_lista_solicitudes(get_authenticated_client, solicitud):
+    solicitud = solicitud
 
     client = get_authenticated_client
     response = client.get("/view-set/solicitudes/")
@@ -73,18 +63,11 @@ def test_lectura_lista_solicitudes(get_authenticated_client, cliente, trabajador
 
 
 @pytest.mark.django_db
-def test_update_fecha_solicitada_por_cliente(get_authenticated_client, cliente, trabajador, servicio):
+def test_update_fecha_solicitada_por_cliente(get_authenticated_client, solicitud):
     from apps.solicitudes.models import Solicitudes
     from datetime import date, timedelta
 
-    solicitud = Solicitudes.objects.create(
-        cliente=cliente,
-        trabajador=trabajador,
-        servicio=servicio,
-        direccion="Original",
-        fecha_solicitada=date.today() + timedelta(days=2),
-        descripcion="Texto original"
-    )
+    solicitud = solicitud
 
     nueva_fecha = date.today() + timedelta(days=5)
 
@@ -99,18 +82,9 @@ def test_update_fecha_solicitada_por_cliente(get_authenticated_client, cliente, 
 
 
 @pytest.mark.django_db
-def test_eliminar_solicitud_por_cliente(get_authenticated_client, cliente, trabajador, servicio):
-    from apps.solicitudes.models import Solicitudes
-    from datetime import date, timedelta
+def test_eliminar_solicitud_por_cliente(get_authenticated_client, solicitud):
 
-    solicitud = Solicitudes.objects.create(
-        cliente=cliente,
-        trabajador=trabajador,
-        servicio=servicio,
-        direccion="Original",
-        fecha_solicitada=date.today() + timedelta(days=2),
-        descripcion="Texto original"
-    )
+    solicitud = solicitud
 
     response = get_authenticated_client.delete(f"/view-set/solicitudes/{solicitud.uuid}/")
 

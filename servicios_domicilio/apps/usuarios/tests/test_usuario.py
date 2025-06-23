@@ -167,3 +167,92 @@ def test_trabajador_puede_aceptar_solicitud(cliente, trabajador, servicio, get_a
     assert solicitud.estado == "aceptada"
     assert solicitud.fecha_confirmacion is not None
     assert solicitud.fecha_rechazo is None
+
+@pytest.mark.django_db
+def test_trabajador_ve_solo_sus_solicitudes(api_client, cliente, servicio):
+    # Usamos el servicio del fixture y creamos dos trabajadores manualmente
+    trabajador1 = Usuario.objects.create_user(
+        username="trabajador_1",
+        email="t1@example.com",
+        password="test123",
+        tipo="trabajador",
+        domicilio="Calle 1"
+    )
+    trabajador2 = Usuario.objects.create_user(
+        username="trabajador_2",
+        email="t2@example.com",
+        password="test123",
+        tipo="trabajador",
+        domicilio="Calle 2"
+    )
+
+    # Asignamos el mismo servicio a ambos trabajadores
+    trabajador1.servicio.add(servicio)
+    trabajador2.servicio.add(servicio)
+
+    # Creamos una solicitud para cada trabajador
+    Solicitudes.objects.create(
+        cliente=cliente,
+        trabajador=trabajador1,
+        servicio=servicio,
+        direccion="Direccion A",
+        fecha_solicitada=date.today() + timedelta(days=1),
+        descripcion="Solicitud para t1"
+    )
+    Solicitudes.objects.create(
+        cliente=cliente,
+        trabajador=trabajador2,
+        servicio=servicio,
+        direccion="Direccion B",
+        fecha_solicitada=date.today() + timedelta(days=2),
+        descripcion="Solicitud para t2"
+    )
+
+    # Autenticamos al trabajador1 usando JWT
+    refresh = RefreshToken.for_user(trabajador1)
+    token = str(refresh.access_token)
+    api_client.credentials(HTTP_AUTHORIZATION=f'Bearer {token}')
+
+    # Llamamos al endpoint de solicitudes
+    response = api_client.get("/view-set/solicitudes/")
+
+    # Validamos respuesta exitosa
+    assert response.status_code == 200
+    resultados = response.data["results"]
+
+    # Validamos que solo haya una solicitud y sea la asignada a trabajador1
+    assert len(resultados) == 1
+    assert resultados[0]["descripcion"] == "Solicitud para t1"
+    
+@pytest.mark.django_db
+def test_cliente_ve_solo_trabajadores(api_client, cliente, trabajador):
+    # Creamos un segundo cliente (con la misma lógica del fixture `cliente`)
+    Usuario.objects.create_user(
+        username="cliente_extra",
+        email="cliente2@example.com",
+        password="testpass123",
+        tipo="cliente",
+        domicilio="Calle falsa 999",
+        telefono="3811122233"
+    )
+
+    # Autenticamos al cliente principal con JWT
+    refresh = RefreshToken.for_user(cliente)
+    token = str(refresh.access_token)
+    api_client.credentials(HTTP_AUTHORIZATION=f'Bearer {token}')
+
+    # El cliente accede al listado de usuarios
+    response = api_client.get("/view-set/usuarios/")
+
+    # Verificamos que la respuesta sea exitosa
+    assert response.status_code == 200
+
+    # Obtenemos los datos del listado
+    data = response.data["data"]
+
+    # Verificamos que todos los elementos sean de tipo 'trabajador'
+    assert all(user["tipo"] == "trabajador" for user in data)
+
+    # Verificamos que el otro cliente creado no esté en la lista
+    usernames = [user["username"] for user in data]
+    assert "cliente_extra" not in usernames
