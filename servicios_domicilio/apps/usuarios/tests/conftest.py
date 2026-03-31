@@ -17,6 +17,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from apps.solicitudes.models import Servicio, Solicitudes
 from apps.usuarios.models import Usuario
 from datetime import date, timedelta
+from unittest.mock import patch
 
 User = get_user_model()
 
@@ -94,11 +95,27 @@ def get_authenticated_client(cliente, api_client):
 
 @pytest.fixture
 def get_authenticated_worker(trabajador, api_client):
-
     refresh = RefreshToken.for_user(trabajador)
     access_token = str(refresh.access_token)
     api_client.credentials(HTTP_AUTHORIZATION=f'Bearer {access_token}')
     return api_client
+
+
+@pytest.fixture(autouse=True)
+def mock_opencage():
+    with patch('servicios_domicilio.core.utils.requests.get') as mock_get:
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.json.return_value = {
+            'results': [
+                {
+                    'geometry': {
+                        'lat': -34.6037,
+                        'lng': -58.3816
+                    }
+                }
+            ]
+        }
+        yield mock_get
 
 
 
