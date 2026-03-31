@@ -5,6 +5,9 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.exceptions import ErrorDetail
 from apps.solicitudes.models import Servicio, Solicitudes
 from rest_framework import status
+from apps.usuarios.serializers import UsuarioSerializer
+from unittest.mock import patch
+from apps.usuarios.models import Usuario
 
 """
 Test de API REST para la aplicación de servicios a domicilio.
@@ -310,3 +313,88 @@ def test_cliente_ve_solo_trabajadores(api_client, cliente, trabajador):
     assert str(trabajador.uuid) in trabajadores_ids
     assert str(trabajador2.uuid) in trabajadores_ids
     assert "cliente2" not in [u["username"] for u in usuarios]
+
+
+#######################Test Unitarios##########################
+@pytest.mark.django_db
+def test_serializer_trabajador_sin_servicio_falla():
+    payload = {
+        "username": "trabajador_test",
+        "password": "password123",
+        "email": "test@trabajador.com",
+        "tipo": "trabajador",
+        "domicilio": "Calle Falsa 123",
+        "servicio": []
+    }
+
+    serializer = UsuarioSerializer(data=payload)
+
+    assert serializer.is_valid() is False
+    assert "servicio" in serializer.errors
+    assert str(serializer.errors["servicio"][0]) == "Un trabajador debe tener un servicio."
+
+
+@pytest.mark.django_db
+def test_serializer_cliente_con_servicio_falla(servicio):
+    payload = {
+        "username": "cliente_test",
+        "password": "password123",
+        "email": "test@cliente.com",
+        "tipo": "cliente",
+        "domicilio": "Calle Falsa 123",
+        "servicio": [servicio.nombre]
+    }
+
+    serializer = UsuarioSerializer(data=payload)
+
+    assert serializer.is_valid() is False
+    assert "servicio" in serializer.errors
+    assert str(serializer.errors["servicio"][0]) == "Un cliente no debe tener un servicio asignado."
+
+
+@pytest.mark.django_db
+def test_serializer_datos_validos_cliente():
+    payload = {
+        "username": "cliente_ok",
+        "password": "password123",
+        "email": "ok@cliente.com",
+        "tipo": "cliente",
+        "domicilio": "Calle Falsa 123",
+        "servicio": []
+    }
+    serializer = UsuarioSerializer(data=payload)
+    assert serializer.is_valid() is True
+
+
+@pytest.mark.django_db
+def test_usuario_str_representation(trabajador, servicio):
+
+        expected_str = f"{trabajador.username} - (trabajador) - Servicios: Plomería"
+        assert str(trabajador) == expected_str
+
+
+#######################Test Integracion##########################
+@pytest.mark.django_db
+def test_creacion_usuario_guarda_coordenadas_mocked(db):
+    data = {
+        "username": "test_coords",
+        "password": "pass123",
+        "tipo": "cliente",
+        "domicilio": "Calle Falsa 123",
+        "email": "coords@test.com"
+    }
+    serializer = UsuarioSerializer(data=data)
+    assert serializer.is_valid()
+    user = serializer.save()
+
+    assert user.lat == -34.6037
+    assert user.lon == -58.3816
+
+
+
+
+
+
+
+
+
