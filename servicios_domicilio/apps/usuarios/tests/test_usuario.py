@@ -33,7 +33,7 @@ Frameworks:
 def test_no_puede_crearse_trabajador_sin_servicio(api_client):
     # Crea un superusuario administrador que puede crear otros usuarios
     admin = Usuario.objects.create_superuser(
-        username="admin", email="admin@example.com", password="admin123", tipo="admin"
+        username="admin", email="admin@example.com", password="admin123", tipo="admin", servicio="plomero"
     )
 
     # Genera un token JWT de autenticación para ese admin
@@ -50,7 +50,8 @@ def test_no_puede_crearse_trabajador_sin_servicio(api_client):
         "password": "testpass123",
         "tipo": "trabajador",
         "domicilio": "Don Lopez",
-        "telefono": "3834568923"
+        "telefono": "3834568923",
+        "servicio": "plomero",
         # No incluye 'servicio'
     }
 
